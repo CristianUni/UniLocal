@@ -8,7 +8,7 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name = "codigo")
+    @Column( name = "codigo",length = 10)
     private int codigo;
     @Column( name = "descripcion", length = 10)
     private String descripcion;

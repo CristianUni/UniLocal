@@ -1,21 +1,19 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Ciudad {
+public class Imagen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="codigo",length = 10)
+    @Column(name = "codigo",length = 10)
     private int codigo;
-    @Column(name="nombre",length = 100)
-    private String nombre;
+    @Column(name = "link",length = 1000)
+    private String link;
 
-    @OneToMany(mappedBy = "ciudad")
-    private List<Lugar> lugar;
+    @ManyToOne
+    private Lugar lugar;
 
     public int getCodigo() {
         return codigo;
@@ -25,19 +23,20 @@ public class Ciudad {
         this.codigo = codigo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getLink() {
+        return link;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Ciudad ciudad = (Ciudad) o;
-        return codigo == ciudad.codigo;
+        Imagen imagen = (Imagen) o;
+        return codigo == imagen.codigo;
     }
 
     @Override
@@ -45,7 +44,7 @@ public class Ciudad {
         return Objects.hash(codigo);
     }
 
-    public Ciudad(){
+    public Imagen(){
         super();
     }
 }
