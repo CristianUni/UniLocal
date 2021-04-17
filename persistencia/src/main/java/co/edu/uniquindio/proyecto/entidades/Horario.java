@@ -1,11 +1,12 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import jdk.jfr.Enabled;
+
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Horario {
+public class Horario implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

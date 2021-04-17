@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Registro_Lugar implements Serializable {
+public class RegistroLugar implements Serializable {
 
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
@@ -15,8 +15,8 @@ public class Registro_Lugar implements Serializable {
     @Column(name = "estado")
     private Estado estado;
     @Column(name = "fecha_creacion")
-    private Date fecha_creacion;
     @Temporal(TemporalType.DATE)
+    private Date fecha_creacion;
     @Column(name = "fecha_aprobacion")
     @Temporal(TemporalType.DATE)
     private Date fecha_aprobacion;
@@ -27,7 +27,7 @@ public class Registro_Lugar implements Serializable {
     @OneToOne
     private Lugar lugar;
 
-    public Registro_Lugar() {
+    public RegistroLugar() {
         super();
     }
 
@@ -41,13 +41,6 @@ public class Registro_Lugar implements Serializable {
     }
 
 
-    public String getUsuario_moderador() {
-        return usuario_moderador;
-    }
-
-    public void setUsuario_moderador(String usuario_moderador) {
-        this.usuario_moderador = usuario_moderador;
-    }
 
     public Estado getEstado() {
         return estado;
@@ -81,7 +74,7 @@ public class Registro_Lugar implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Registro_Lugar that = (Registro_Lugar) o;
+        RegistroLugar that = (RegistroLugar) o;
 
         return codigo == that.codigo;
     }
