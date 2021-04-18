@@ -1,24 +1,22 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 import javax.persistence.*;
-import javax.validation.constraints.Positive;
 import java.io.Serializable;
 
 @Entity
-public class Telefono implements Serializable {
+public class Reporte implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column( name = "codigo")
+    @Column(name = "codigo")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
-    @Column( name = "numero",unique = true)
-    @Positive
-    private int numero;
+    @Column(name = "descripcion", length = 1000, nullable = false)
+    private String descripcion;
 
     @ManyToOne
-    private Lugar lugar;
+    private Administrador administrador;
 
-    public Telefono() {
+    public Reporte(){
         super();
     }
 
@@ -30,12 +28,12 @@ public class Telefono implements Serializable {
         this.codigo = codigo;
     }
 
-    public int getNumero() {
-        return numero;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
@@ -43,9 +41,9 @@ public class Telefono implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Telefono telefono = (Telefono) o;
+        Reporte reporte = (Reporte) o;
 
-        return codigo == telefono.codigo;
+        return codigo == reporte.codigo;
     }
 
     @Override
@@ -53,3 +51,4 @@ public class Telefono implements Serializable {
         return codigo;
     }
 }
+

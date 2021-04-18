@@ -9,17 +9,17 @@ public class RegistroLugar implements Serializable {
 
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    @Column(name = "codigo", length = 10)
+    @Column(name = "codigo")
     private int codigo;
-
-    @Column(name = "estado")
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "estado", nullable = false)
     private Estado estado;
-    @Column(name = "fecha_creacion")
+    @Column(name = "fecha_creacion", nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date fecha_creacion;
-    @Column(name = "fecha_aprobacion")
+    private Date fechaCreacion;
+    @Column(name = "fecha_aprobacion", nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date fecha_aprobacion;
+    private Date fechaAprobacion;
 
     @ManyToOne
     private Moderador moderador;
@@ -40,8 +40,6 @@ public class RegistroLugar implements Serializable {
         this.codigo = codigo;
     }
 
-
-
     public Estado getEstado() {
         return estado;
     }
@@ -50,23 +48,21 @@ public class RegistroLugar implements Serializable {
         this.estado = estado;
     }
 
-    public Date getFecha_creacion() {
-        return fecha_creacion;
+    public Date getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
-    public Date getFecha_aprobacion() {
-        return fecha_aprobacion;
+    public Date getFechaAprobacion() {
+        return fechaAprobacion;
     }
 
-    public void setFecha_aprobacion(Date fecha_aprobacion) {
-        this.fecha_aprobacion = fecha_aprobacion;
+    public void setFechaAprobacion(Date fecha_aprobacion) {
+        this.fechaAprobacion = fechaAprobacion;
     }
-
-
 
 
     @Override

@@ -9,27 +9,13 @@ public class Resena implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="codigo",length = 10)
+    @Column(name="codigo")
     private int codigo;
-    @Column(name = "calificacion", length = 1)
+    @Column(name = "calificacion", nullable = false)
     @Positive
     private int calificacion;
-    @Column(name = "email_usuario",length = 100,unique = true)
-    private String email_usuario;
-    @Column(name = "comentario",length = 1000)
+    @Column(name = "comentario",length = 500)
     private String comentario;
-    @Column(name = "id_lugar",length = 10,unique = true)
-    @Positive
-    private int id_lugar;
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
 
     @ManyToOne
     private Lugar lugar;
@@ -39,7 +25,14 @@ public class Resena implements Serializable {
 
     public Resena(){
         super();
+    }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public int getCalificacion() {
@@ -50,14 +43,6 @@ public class Resena implements Serializable {
         this.calificacion = calificacion;
     }
 
-    public String getEmail_usuario() {
-        return email_usuario;
-    }
-
-    public void setEmail_usuario(String email_usuario) {
-        this.email_usuario = email_usuario;
-    }
-
     public String getComentario() {
         return comentario;
     }
@@ -65,17 +50,6 @@ public class Resena implements Serializable {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-
-    public int getId_lugar() {
-        return id_lugar;
-    }
-
-    public void setId_lugar(int id_lugar) {
-        this.id_lugar = id_lugar;
-    }
-
-
-
 
 
     @Override

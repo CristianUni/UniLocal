@@ -7,9 +7,9 @@ import java.util.Objects;
 public class Imagen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo",length = 10)
+    @Column(name = "codigo")
     private int codigo;
-    @Column(name = "link",length = 1000)
+    @Column(name = "link",length = 1000, nullable = false)
     private String link;
 
     @ManyToOne

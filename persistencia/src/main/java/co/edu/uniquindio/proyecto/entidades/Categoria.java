@@ -9,11 +9,11 @@ public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name = "codigo",length = 10)
+    @Column( name = "codigo")
     private int codigo;
-    @Column( name = "descripcion", length = 10)
+    @Column( name = "descripcion", length = 200)
     private String descripcion;
-    @Column( name = "nombre", length = 10)
+    @Column( name = "nombre", length = 50, nullable = false)
     private String nombre;
 
 

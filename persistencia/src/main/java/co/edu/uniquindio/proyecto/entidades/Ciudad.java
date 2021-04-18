@@ -9,13 +9,20 @@ import java.util.Objects;
 public class Ciudad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="codigo",length = 10)
+    @Column(name="codigo")
     private int codigo;
-    @Column(name="nombre",length = 100)
+    @Column(name="nombre",length = 60, nullable = false)
     private String nombre;
 
     @OneToMany(mappedBy = "ciudad")
     private List<Lugar> lugar;
+
+    @OneToMany(mappedBy = "ciudad")
+    private List<Usuario> usuarios;
+
+    public Ciudad(){
+        super();
+    }
 
     public int getCodigo() {
         return codigo;
@@ -45,7 +52,4 @@ public class Ciudad {
         return Objects.hash(codigo);
     }
 
-    public Ciudad(){
-        super();
-    }
 }

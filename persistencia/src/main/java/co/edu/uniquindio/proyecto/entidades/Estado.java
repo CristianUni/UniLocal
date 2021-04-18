@@ -1,5 +1,5 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 public enum Estado {
-    APROBADO,EN_ESPERA,RECHAZADO
+    EN_ESPERA,RECHAZADO,APROBADO
 }

@@ -12,18 +12,16 @@ public class Lugar implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( name = "id" ,length = 10)
     private int id;
-    @Column( name = "descripcion", length = 1000)
+    @Column( name = "descripcion", length = 500)
     private String descripcion;
-    @Column( name = "nombre", length = 100)
+    @Column( name = "nombre", length = 100, nullable = false)
     private String nombre;
-    @Column( name = "direccion",length = 1000)
+    @Column( name = "direccion",length = 100, nullable = false)
     private String direccion;
-    @Column( name = "latitud",length = 100)
-    private String latitud;
-    @Column( name = "longitud",length = 100)
-    private String longitud;
-
-
+    @Column(name = "latitud", precision = 3, scale = 6, nullable = false)
+    private double latitud;
+    @Column(name = "longitud", precision = 2, scale = 6, nullable = false)
+    private double longitud;
 
 
     @OneToMany(mappedBy = "lugar")
@@ -36,13 +34,16 @@ public class Lugar implements Serializable {
     private Categoria categoria;
     @ManyToOne
     private Ciudad ciudad;
-    //@ManyToOne
-    //private usuario usuario;
+    @ManyToOne
+    private Usuario usuario;
     @OneToMany(mappedBy = "lugar")
     private List<Resena> resena;
     @OneToMany(mappedBy = "lugar")
     private List<Imagen> imagen;
 
+    public Lugar(){
+        super();
+    }
 
     public int getId() {
         return id;
@@ -68,7 +69,6 @@ public class Lugar implements Serializable {
         this.nombre = nombre;
     }
 
-
     public String getDireccion() {
         return direccion;
     }
@@ -77,19 +77,19 @@ public class Lugar implements Serializable {
         this.direccion = direccion;
     }
 
-    public String getLatitud() {
+    public double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(String latitud) {
+    public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
 
-    public String getLongitud() {
+    public double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(String longitud) {
+    public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
 
@@ -106,7 +106,4 @@ public class Lugar implements Serializable {
         return Objects.hash(id);
     }
 
-    public Lugar(){
-        super();
-    }
 }

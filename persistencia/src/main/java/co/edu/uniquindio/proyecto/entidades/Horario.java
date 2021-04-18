@@ -1,7 +1,5 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,27 +8,22 @@ public class Horario implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-
-    @Column( name = "codigo",length=10)
+    @Column( name = "codigo")
     private int codigo;
-    @Column( name = "hora_apertura", length = 8)
-    private String hora_apertura;
-    @Column( name = "hora_cierre", length = 8)
-    private String hora_cierre;
-
-    @Enumerated(EnumType.STRING)
-    @Column( name = "dia",unique =true)
+    @Column( name = "hora_apertura", length = 8, nullable = false)
+    private String horaApertura;
+    @Column( name = "hora_cierre", length = 8, nullable = false)
+    private String horaCierre;
+    @Enumerated(EnumType.ORDINAL)
+    @Column( name = "dia", nullable = false)
     private Dia dia;
-
 
     @ManyToOne
     private Lugar lugar;
 
     public Horario(){
         super();
-
     }
-
 
     public int getCodigo() {
         return codigo;
@@ -40,20 +33,20 @@ public class Horario implements Serializable {
         this.codigo = codigo;
     }
 
-    public String getHora_apertura() {
-        return hora_apertura;
+    public String getHoraApertura() {
+        return horaApertura;
     }
 
-    public void setHora_apertura(String hora_apertura) {
-        this.hora_apertura = hora_apertura;
+    public void setHoraApertura(String horaApertura) {
+        this.horaApertura = horaApertura;
     }
 
-    public String getHora_cierre() {
-        return hora_cierre;
+    public String getHoraCierre() {
+        return horaCierre;
     }
 
-    public void setHora_cierre(String hora_cierre) {
-        this.hora_cierre = hora_cierre;
+    public void setHoraCierre(String horCierre) {
+        this.horaCierre = horaCierre;
     }
 
     public Dia getDia() {
@@ -63,14 +56,6 @@ public class Horario implements Serializable {
     public void setDia(Dia dia) {
         this.dia = dia;
     }
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -87,6 +72,5 @@ public class Horario implements Serializable {
     public int hashCode() {
         return codigo;
     }
-
 
 }
