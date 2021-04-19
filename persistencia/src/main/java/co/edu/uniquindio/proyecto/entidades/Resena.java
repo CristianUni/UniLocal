@@ -27,6 +27,11 @@ public class Resena implements Serializable {
         super();
     }
 
+    public Resena(int calificacion, String comentario) {
+        this.calificacion = calificacion;
+        this.comentario = comentario;
+    }
+
     public int getCodigo() {
         return codigo;
     }

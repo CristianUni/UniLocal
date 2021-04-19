@@ -25,6 +25,12 @@ public class Horario implements Serializable {
         super();
     }
 
+    public Horario(String horaApertura, String horaCierre, Dia dia) {
+        this.horaApertura = horaApertura;
+        this.horaCierre = horaCierre;
+        this.dia = dia;
+    }
+
     public int getCodigo() {
         return codigo;
     }

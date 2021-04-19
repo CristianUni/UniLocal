@@ -20,10 +20,6 @@ public class Categoria implements Serializable {
     @OneToOne(mappedBy = "categoria")
     private Lugar lugar;
 
-    public Categoria(){
-        super();
-    }
-
     public int getCodigo() {
         return codigo;
     }
@@ -59,5 +55,12 @@ public class Categoria implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(codigo);
+    }
+
+    public Categoria(){super(); }
+
+    public Categoria(String descripcion, String nombre) {
+        this.descripcion = descripcion;
+        this.nombre = nombre;
     }
 }

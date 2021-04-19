@@ -13,13 +13,19 @@ public class Telefono implements Serializable {
     private int codigo;
     @Column( name = "numero",unique = true)
     @Positive
-    private int numero;
+    private String numero;
 
     @ManyToOne
     private Lugar lugar;
 
     public Telefono() {
         super();
+    }
+
+
+    public Telefono(@Positive String numero) {
+
+        this.numero = numero;
     }
 
     public int getCodigo() {
@@ -30,11 +36,11 @@ public class Telefono implements Serializable {
         this.codigo = codigo;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

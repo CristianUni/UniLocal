@@ -106,4 +106,11 @@ public class Lugar implements Serializable {
         return Objects.hash(id);
     }
 
+    public Lugar( String descripcion, String nombre, String direccion, double latitud, double longitud) {
+        this.descripcion = descripcion;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
 }
