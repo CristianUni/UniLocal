@@ -25,6 +25,15 @@ public class Persona implements Serializable {
         super();
     }
 
+    public Persona(String email, String nombre, String nickname, String contrasena, double latitud, double longitud) {
+        this.email = email;
+        this.nombre = nombre;
+        this.nickname = nickname;
+        this.contrasena = contrasena;
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
+
     public String getEmail() {
         return email;
     }

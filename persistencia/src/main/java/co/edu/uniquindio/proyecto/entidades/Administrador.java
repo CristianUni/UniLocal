@@ -16,4 +16,8 @@ public class Administrador extends Persona implements Serializable {
     public Administrador(){
         super();
     }
+
+    public Administrador(String email, String nombre, String nickname, String contrasena, double latitud, double longitud) {
+        super(email, nombre, nickname, contrasena, latitud, longitud);
+    }
 }

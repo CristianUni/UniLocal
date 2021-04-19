@@ -16,4 +16,8 @@ public class Moderador extends Persona implements Serializable {
     public Moderador(){
         super();
     }
+
+    public Moderador(String email, String nombre, String nickname, String contrasena, double latitud, double longitud) {
+        super(email, nombre, nickname, contrasena, latitud, longitud);
+    }
 }
