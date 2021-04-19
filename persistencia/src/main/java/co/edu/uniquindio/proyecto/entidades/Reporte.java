@@ -20,6 +20,10 @@ public class Reporte implements Serializable {
         super();
     }
 
+    public Reporte(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public int getCodigo() {
         return codigo;
     }
