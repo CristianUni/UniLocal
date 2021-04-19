@@ -81,5 +81,9 @@ public class RegistroLugar implements Serializable {
     }
 
 
-
+    public RegistroLugar(Estado estado, Date fechaCreacion, Date fechaAprobacion) {
+        this.estado = estado;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaAprobacion = fechaAprobacion;
+    }
 }

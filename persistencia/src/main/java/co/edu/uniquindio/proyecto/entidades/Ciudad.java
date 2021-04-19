@@ -52,4 +52,7 @@ public class Ciudad {
         return Objects.hash(codigo);
     }
 
+    public Ciudad(String nombre) {
+        this.nombre = nombre;
+    }
 }

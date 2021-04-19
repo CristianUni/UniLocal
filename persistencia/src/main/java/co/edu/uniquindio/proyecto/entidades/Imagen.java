@@ -47,4 +47,16 @@ public class Imagen {
     public Imagen(){
         super();
     }
+
+    public Imagen( String link) {
+        this.link = link;
+    }
+
+    @Override
+    public String toString() {
+        return "Imagen{" +
+                "codigo=" + codigo +
+                ", link='" + link + '\'' +
+                '}';
+    }
 }
