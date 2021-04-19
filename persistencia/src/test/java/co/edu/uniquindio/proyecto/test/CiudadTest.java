@@ -59,7 +59,7 @@ public class CiudadTest {
 
     @Test
     @Sql("classpath:ciudades.sql")
-    public void listarImagenesTest(){
+    public void listarCiudadesTest(){
         List<Ciudad> lista = ciudadRepo.findAll();
         System.out.println(lista);
     }

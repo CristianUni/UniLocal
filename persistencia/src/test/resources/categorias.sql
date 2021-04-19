@@ -1,3 +1,3 @@
-insert into categoria(codigo,descripcion,nombre) values (1,"lloron","lloreria");
-insert into categoria(codigo,descripcion,nombre) values (2,"barbacoa","barbq");
-insert into categoria(codigo,descripcion,nombre) values (3,"picantes","pikafluw");
+insert into categoria(descripcion,nombre) values ("lloron","lloreria");
+insert into categoria(descripcion,nombre) values ("barbacoa","barbq");
+insert into categoria(descripcion,nombre) values ("picantes","pikafluw");
