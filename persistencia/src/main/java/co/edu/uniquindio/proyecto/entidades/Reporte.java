@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyecto.entidades;
 import javax.persistence.*;
 import java.io.Serializable;
 
+//Entidad Reporte
 @Entity
 public class Reporte implements Serializable {
 
@@ -13,13 +14,16 @@ public class Reporte implements Serializable {
     @Column(name = "descripcion", length = 1000, nullable = false)
     private String descripcion;
 
+    //Relacion de Reporte y Adminstrador de muchos a uno
     @ManyToOne
     private Administrador administrador;
 
+    //contructor sin parametros
     public Reporte(){
         super();
     }
 
+    //constructor sobrecargado
     public Reporte(String descripcion) {
         this.descripcion = descripcion;
     }

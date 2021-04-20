@@ -3,6 +3,9 @@ package co.edu.uniquindio.proyecto.entidades;
 import javax.persistence.*;
 import java.io.Serializable;
 
+// Clase padre de la cual heredaran Usuario, Administrador, Moderador,
+// usando la estrategia de tablas por clase la cual mapeará todos los atributos
+// y metodos a los hijos
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
 public class Persona implements Serializable {
@@ -21,10 +24,12 @@ public class Persona implements Serializable {
     @Column(name = "longitud", precision = 2, scale = 6)
     private double longitud;
 
+    //contructor sin parametros
     public Persona(){
         super();
     }
 
+    //constructor sobrecargado
     public Persona(String email, String nombre, String nickname, String contrasena, double latitud, double longitud) {
         this.email = email;
         this.nombre = nombre;
@@ -34,6 +39,7 @@ public class Persona implements Serializable {
         this.longitud = longitud;
     }
 
+    // Getters y Setters de los atributos
     public String getEmail() {
         return email;
     }

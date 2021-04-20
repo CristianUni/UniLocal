@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 import java.util.List;
 
+//Clase UsuarioTest para las pruebas CRUD de la entidad Usuario
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UsuarioTest {
@@ -17,6 +18,7 @@ public class UsuarioTest {
     @Autowired
     private UsuarioRepo usuarioRepo;
 
+    //Metodo para simular el registro del usuario en la base de datos
     @Test
     public void registrarUsuarioTest(){
 
@@ -26,6 +28,7 @@ public class UsuarioTest {
         Assertions.assertNotNull(usuarioGuardado);
     }
 
+    //Metodo para simular la eliminacion de un usuario en la base de datos
     @Test
     public void eliminarUsuarioTest(){
 
@@ -39,6 +42,7 @@ public class UsuarioTest {
         Assertions.assertNull(usuarioBorrado);
     }
 
+    //Metodo para simular el cambio de informacion de un dato existente perteneciente a un usuario en la base de datos
     @Test
     public void actualizarUsuarioTest() {
 
@@ -53,6 +57,7 @@ public class UsuarioTest {
         Assertions.assertEquals("estanosemeolvida123",usuarioBuscado.getContrasena());
     }
 
+    //Metodo para simular el enlistado de todos los registros de usuario en la base de datos
     @Test
     @Sql("classpath:usuarios.sql")
     public void listarUsuariosTest(){

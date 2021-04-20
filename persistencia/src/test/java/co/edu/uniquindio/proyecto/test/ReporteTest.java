@@ -11,6 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+//Clase ReporteTest para las pruebas CRUD de la entidad Reporte
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ReporteTest {
@@ -18,6 +19,7 @@ public class ReporteTest {
     @Autowired
     private ReporteRepo reporteRepo;
 
+    //Metodo para simular el registro del reporte en la base de datos
     @Test
     public void registrarReporteTest(){
 
@@ -27,6 +29,7 @@ public class ReporteTest {
         Assertions.assertNotNull(reporteGuardado);
     }
 
+    //Metodo para simular la eliminacion de un reporte en la base de datos
     @Test
     public void eliminarReporteTest(){
 
@@ -40,6 +43,7 @@ public class ReporteTest {
         Assertions.assertNull(reporteBorrado);
     }
 
+    //Metodo para simular el cambio de informacion de un dato existente perteneciente a un reporte en la base de datos
     @Test
     public void actualizarReporteTest() {
 
@@ -54,6 +58,7 @@ public class ReporteTest {
         Assertions.assertEquals("Cantidad masculinos:60, Cantidad femeninos:85",reporteBuscado.getDescripcion());
     }
 
+    //Metodo para simular el enlistado de todos los registros de reporte en la base de datos
     @Test
     @Sql("classpath:usuarios.sql")
     public void listarReporteTest(){

@@ -11,6 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+//Clase AministradorTest para las pruebas CRUD de la entidad Administrador
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class AdministradorTest {
@@ -18,6 +19,7 @@ public class AdministradorTest {
     @Autowired
     private AdministradorRepo administradorRepo;
 
+    //Metodo para simular el registro del administrador en la base de datos
     @Test
     public void registrarAdministradorTest(){
 
@@ -27,6 +29,7 @@ public class AdministradorTest {
         Assertions.assertNotNull(administradorGuardado);
     }
 
+    //Metodo para simular la eliminacion de un administrador en la base de datos
     @Test
     public void eliminarAdministradorTest(){
 
@@ -40,6 +43,7 @@ public class AdministradorTest {
         Assertions.assertNull(administradorBorrado);
     }
 
+    //Metodo para simular el cambio de informacion de un dato existente perteneciente a un administrador en la base de datos
     @Test
     public void actualizarAdministradorTest() {
 
@@ -54,6 +58,7 @@ public class AdministradorTest {
         Assertions.assertEquals("estanosemeolvida123",administradorBuscado.getContrasena());
     }
 
+    //Metodo para simular el enlistado de todos los registros de administrador en la base de datos
     @Test
     @Sql("classpath:administradores.sql")
     public void listarAdministradorTest(){

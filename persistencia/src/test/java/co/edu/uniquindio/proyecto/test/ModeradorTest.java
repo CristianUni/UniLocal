@@ -11,6 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+//Clase ModeradorTest para las pruebas CRUD de la entidad Moderador
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ModeradorTest {
@@ -18,6 +19,7 @@ public class ModeradorTest {
     @Autowired
     private ModeradorRepo moderadorRepo;
 
+    //Metodo para simular el registro del moderador en la base de datos
     @Test
     public void registrarModeradorTest(){
 
@@ -27,6 +29,7 @@ public class ModeradorTest {
         Assertions.assertNotNull(moderadorGuardado);
     }
 
+    //Metodo para simular la eliminacion de un moderador en la base de datos
     @Test
     public void eliminarModeradorTest(){
 
@@ -40,6 +43,7 @@ public class ModeradorTest {
         Assertions.assertNull(moderadorBorrado);
     }
 
+    //Metodo para simular el cambio de informacion de un dato existente perteneciente a un moderador en la base de datos
     @Test
     public void actualizarModeradorTest() {
 
@@ -54,6 +58,7 @@ public class ModeradorTest {
         Assertions.assertEquals("estanosemeolvida123",moderadorBuscado.getContrasena());
     }
 
+    //Metodo para simular el enlistado de todos los registros de moderador en la base de datos
     @Test
     @Sql("classpath:moderadores.sql")
     public void listarModeradorTest(){
