@@ -7,23 +7,33 @@ import java.util.Objects;
 
 @Entity
 public class Ciudad {
+
+   //Lave primaria de la entidad Ciudad, es un número autogenerado
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="codigo")
     private int codigo;
+    //Atributo que sirve para asignar un nombre cuando se crea una Ciudad
     @Column(name="nombre",length = 60, nullable = false)
     private String nombre;
 
+    //Relación con la entidad Lugar, donde indica que una Ciudad tiene una lista de Lugares
     @OneToMany(mappedBy = "ciudad")
     private List<Lugar> lugar;
 
+    //Relación con la entidad Usuario, donde indica que la Ciudad tiene un lista de Ususarios
     @OneToMany(mappedBy = "ciudad")
     private List<Usuario> usuarios;
 
+    //Constructor vacío de la Entidad
     public Ciudad(){
         super();
     }
 
+    /*
+    Metodos get y set de la entidad. Los set sirven para asignarle valores a los atributos; los get sirven para
+    obtener los valores de los atributos
+     */
     public int getCodigo() {
         return codigo;
     }
@@ -52,6 +62,7 @@ public class Ciudad {
         return Objects.hash(codigo);
     }
 
+    //Constructor sobrecargado de la entidad que recibe por parámetro el atributo nombre
     public Ciudad(String nombre) {
         this.nombre = nombre;
     }

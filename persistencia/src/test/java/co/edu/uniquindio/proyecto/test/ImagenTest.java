@@ -11,13 +11,18 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+/*
+Clase que sirve para hacer los respectivas pruebas unitarias del CRUD de la entidad Imagen
+ */
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ImagenTest {
 
+    //Atributo que referencia al repositorio de datos. el @Autowired sirve para que se autoinicialice el atributo
     @Autowired
     private ImagenRepo imagenRepo;
 
+    //Método de prueba para registrar una Imagen
     @Test
     public void registrarImagenTest(){
 
@@ -27,6 +32,7 @@ public class ImagenTest {
         Assertions.assertNotNull(imagenGuardada);
     }
 
+    //Método de prueba para eliminar una Imagen
     @Test
     public void eliminarImagenTest(){
 
@@ -41,6 +47,7 @@ public class ImagenTest {
         Assertions.assertNull(imagenBorrada);
     }
 
+    //Método de prueba para actualizar el link de una Imagen
     @Test
     public void actualizarImagenTest() {
 
@@ -56,6 +63,7 @@ public class ImagenTest {
         Assertions.assertEquals("c:/usuarios/imagenes/nueva.jpg",imagenBuscada.getLink());
     }
 
+    //Método de prueba para listar los datos de una base de datos de sql
     @Test
     @Sql("classpath:imagenes.sql")
     public void listarImagenesTest(){

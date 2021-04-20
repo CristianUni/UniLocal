@@ -15,13 +15,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/*
+Clase que sirve para hacer los respectivas pruebas unitarias del CRUD de la entidad RegistroLugar
+ */
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class RegistroLugarTest {
 
+    //Atributo que referencia al repositorio de datos. el @Autowired sirve para que se autoinicialice el atributo
     @Autowired
     private RegistroLugarRepo registroLugarRepo;
 
+    //Método de prueba para hacer un registro
     @Test
     public void registrarRegistroLugarTest() throws ParseException {
 
@@ -35,6 +40,7 @@ public class RegistroLugarTest {
         Assertions.assertNotNull(registroLugarGuardado);
     }
 
+    //Método de prueba para eliminar un registro de un lugar
     @Test
     public void eliminarRegistroLugarTest() throws ParseException {
 
@@ -52,9 +58,9 @@ public class RegistroLugarTest {
 
         Assertions.assertNull(registroLugarBorrado);
     }
-
+    //Método de prueba para actualizar el estado de un registro
     @Test
-    public void actualizarCiudadTest() throws ParseException {
+    public void actualizarRegistroLugarTest() throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         Date fechaCreacion = sdf.parse("1996/02/14");
@@ -73,6 +79,7 @@ public class RegistroLugarTest {
         Assertions.assertEquals(Estado.APROBADO,registroLugarBuscado.getEstado());
     }
 
+    //Método de prueba para listar los datos de una base de datos de sql
     @Test
     @Sql("classpath:registroLugar.sql")
     public void listarRegistroLugaresTest(){
