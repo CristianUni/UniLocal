@@ -11,14 +11,18 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
-
+/*
+Clase que sirve para hacer los respectivas pruebas unitarias del CRUD de la entidad Ciudad
+ */
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CiudadTest {
 
+    //Atributo que referencia al repositorio de datos. el @Autowired sirve para que se autoinicialice el atributo
     @Autowired
     private CiudadRepo ciudadRepo;
 
+    //Método de prueba para registrar una ciudad
     @Test
     public void registrarCiudadTest(){
 
@@ -28,8 +32,9 @@ public class CiudadTest {
         Assertions.assertNotNull(ciudadGuardada);
     }
 
+    //Método de prueba para eliminar una ciudad
     @Test
-    public void eliminarImagenTest(){
+    public void eliminarCiudadTest(){
 
         Ciudad ciudadNueva= new Ciudad("Circasia");
         Ciudad ciudadGuardada=ciudadRepo.save(ciudadNueva);
@@ -42,6 +47,7 @@ public class CiudadTest {
         Assertions.assertNull(ciudadBorrada);
     }
 
+    //Método de prueba para actualizar en nombre de una Ciudad
     @Test
     public void actualizarCiudadTest() {
 
@@ -57,6 +63,7 @@ public class CiudadTest {
         Assertions.assertEquals("Quimbaya",ciudadBuscada.getNombre());
     }
 
+    //Método de prueba para listar los datos de una base de datos de sql
     @Test
     @Sql("classpath:ciudades.sql")
     public void listarCiudadesTest(){

@@ -11,12 +11,15 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+
+//archivo test para realizar las pruebas (CRUD)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CategoriaTest {
     @Autowired
     private CategoriaRepo categoriaRepo;
 
+    //metodo para realizar la pruba de registrar una categoria
     @Test
     public void registrarCategoriaTest(){
 
@@ -26,6 +29,7 @@ public class CategoriaTest {
         Assertions.assertNotNull(categoriaGuardada);
     }
 
+    //metodo para realizar la pruba de eliminar una categoria
     @Test
     public void eliminarCategoriaTest(){
 
@@ -39,6 +43,7 @@ public class CategoriaTest {
         Assertions.assertNull(categoriaBorrado);
     }
 
+    //metodo para realiza la pruba de actualizar una categoria
     @Test
     public void actualizarCategoriaTest() {
 
@@ -53,6 +58,8 @@ public class CategoriaTest {
         Assertions.assertEquals("fabulosa comida arabe",categoriaBuscado.getDescripcion());
     }
 
+    //nombre de clase en sql
+    //añadir datos a la tabla
     @Test
     @Sql("classpath:categorias.sql")
     public void listarCategoriaTest(){

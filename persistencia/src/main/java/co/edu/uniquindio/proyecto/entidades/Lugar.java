@@ -8,6 +8,9 @@ import java.util.Objects;
 
 @Entity
 public class Lugar implements Serializable {
+
+    //atributos de la clase lugar
+    //llave primaria id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( name = "id" ,length = 10)
@@ -23,24 +26,35 @@ public class Lugar implements Serializable {
     @Column(name = "longitud", precision = 2, scale = 6, nullable = false)
     private double longitud;
 
-
+    //relaciones entre entidades
+    //relacion uno a muchos entre lugar y horario(entidad propietaria)
     @OneToMany(mappedBy = "lugar")
     private List<Horario> horario;
+    //relacion uno a uno entre lugar y registrolugar(entidad propietaria)
     @OneToOne(mappedBy = "lugar")
     private RegistroLugar registroLugar;
+    //relacion uno a muchos entre lugar y telefono(entidad propietaria)
     @OneToMany(mappedBy = "lugar")
     private List<Telefono> telefono;
+    //relacion uno a uno entre lugar y categoria
     @OneToOne
     private Categoria categoria;
+    //relacion muchos a uno entre lugar y ciudad
     @ManyToOne
     private Ciudad ciudad;
+    //relacion muchos a uno entre lugar y usuario
     @ManyToOne
     private Usuario usuario;
+    //relacion uno a muchos entre lugar y resena(entidad propietaria)
     @OneToMany(mappedBy = "lugar")
     private List<Resena> resena;
+    //relacion uno a muchos entre lugar y imagen(entidad propietaria)
     @OneToMany(mappedBy = "lugar")
     private List<Imagen> imagen;
 
+
+
+    //get y set
     public Lugar(){
         super();
     }
@@ -93,6 +107,8 @@ public class Lugar implements Serializable {
         this.longitud = longitud;
     }
 
+
+    //metodos de comparacion de la llave primaria
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,6 +122,7 @@ public class Lugar implements Serializable {
         return Objects.hash(id);
     }
 
+    //metodo constructor de lugar
     public Lugar( String descripcion, String nombre, String direccion, double latitud, double longitud) {
         this.descripcion = descripcion;
         this.nombre = nombre;

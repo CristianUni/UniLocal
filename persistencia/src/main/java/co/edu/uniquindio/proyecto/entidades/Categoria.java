@@ -7,6 +7,9 @@ import java.util.Objects;
 @Entity
 public class Categoria implements Serializable {
 
+
+    //atributos de la calse Categoria
+    //llave primaria id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( name = "codigo")
@@ -17,9 +20,12 @@ public class Categoria implements Serializable {
     private String nombre;
 
 
+    //relacion uno a uno categoria y lugar(entidad propietaria)
     @OneToOne(mappedBy = "categoria")
     private Lugar lugar;
 
+
+    //get y set
     public int getCodigo() {
         return codigo;
     }
@@ -44,6 +50,8 @@ public class Categoria implements Serializable {
         this.nombre = nombre;
     }
 
+
+    //metodos para comparar la llave primaria
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,8 +65,11 @@ public class Categoria implements Serializable {
         return Objects.hash(codigo);
     }
 
+
+    //constructor vacio
     public Categoria(){super(); }
 
+    //constructor Categoria sobrecarga
     public Categoria(String descripcion, String nombre) {
         this.descripcion = descripcion;
         this.nombre = nombre;

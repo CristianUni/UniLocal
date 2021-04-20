@@ -5,16 +5,23 @@ import java.util.Objects;
 
 @Entity
 public class Imagen {
+
+    //Llave principal de entidad, en este caso es un codigo autogenerado de tipo entero
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
     private int codigo;
+    //atributo que sirve para guardar la ruta de la imagen
     @Column(name = "link",length = 1000, nullable = false)
     private String link;
 
+    //Relación con la entidad Lugar que nos indica que la entidad Lugar tiene muchas Imagenes.
     @ManyToOne
     private Lugar lugar;
 
+    /*
+    Métodos get y set de la entidad. Los set nos sirven para asignar valores a los atributos. Los get sirven para obtener el valor de los atributos
+     */
     public int getCodigo() {
         return codigo;
     }
@@ -44,10 +51,12 @@ public class Imagen {
         return Objects.hash(codigo);
     }
 
+    //Constructor vacío de la entidad
     public Imagen(){
         super();
     }
 
+    //Constructor sobrecargado que recibe por parámetro el link, que viene siendo la ruta donde se almacena la imagen
     public Imagen( String link) {
         this.link = link;
     }
