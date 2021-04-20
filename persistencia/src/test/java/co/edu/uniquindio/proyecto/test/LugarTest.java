@@ -12,12 +12,15 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+//archivo test para realizar las pruebas (CRUD)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class LugarTest {
     @Autowired
     private LugarRepo lugarRepo;
 
+
+    //metodo para registrar un lugar
     @Test
     public void registrarLugarTest(){
 
@@ -27,6 +30,7 @@ public class LugarTest {
         Assertions.assertNotNull(lugarGuardada);
     }
 
+    //metodo para eliminar un lugar
     @Test
     public void eliminarLugarTest(){
 
@@ -40,6 +44,7 @@ public class LugarTest {
         Assertions.assertNull(lugarBorrado);
     }
 
+    //metodo para actualziar un lugar
     @Test
     public void actualizarLugarTest() {
 
@@ -54,6 +59,8 @@ public class LugarTest {
         Assertions.assertEquals("fabulosa comida arabe",lugarBuscado.getDescripcion());
     }
 
+    //nombre de clase en sql
+    //añadir datos a la tabla
     @Test
     @Sql("classpath:lugares.sql")
     public void listarUsuariosTest(){
