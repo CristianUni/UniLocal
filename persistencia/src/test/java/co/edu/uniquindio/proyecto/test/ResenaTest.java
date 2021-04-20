@@ -12,14 +12,14 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
-
+//Clase ResenaTest para las pruebas CRUD de la entidad Resena
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ResenaTest {
 
     @Autowired
     private ResenaRepo resenaRepo;
-
+    //Metodo para probar El registro de Resenas en la base de datos
     @Test
     public void registrarResenaTest(){
 
@@ -28,7 +28,7 @@ public class ResenaTest {
 
         Assertions.assertNotNull(resenaGuardado);
     }
-
+    //Metodo para probar la eliminacion de Registros de las Resenas existentes en la base de datos
     @Test
     public void eliminarResenaTest(){
 
@@ -42,7 +42,7 @@ public class ResenaTest {
 
         Assertions.assertNull(resenaBorrado);
     }
-
+    //Metodo para probar el cambio de informacion de un dato existente perteneciente a una Resena hecha por un Usuario existente en la base de datos
     @Test
     public void actualizarResenaTest() {
 
@@ -59,7 +59,7 @@ public class ResenaTest {
 
         Assertions.assertEquals(1,resenaBuscado.getCalificacion());
     }
-
+    //Metodo para probar el enlistado de todos los Registros de Resenas existentes en la base de datos
     @Test
     @Sql("classpath:resena.sql")
     public void listarResenaTest(){

@@ -15,12 +15,14 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
+//Clase HorarioTest para las pruebas CRUD de la entidad Horario
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class HorarioTest {
     @Autowired
     private HorarioRepo horarioRepo;
 
+    //Metodo para probar El registro de Horarios en la base de datos
     @Test
     public void registrarHorarioTest(){
 
@@ -29,7 +31,7 @@ public class HorarioTest {
 
         Assertions.assertNotNull(horarioGuardado);
     }
-
+    //Metodo para probar la eliminacion de Horarios en la base de datos
     @Test
     public void eliminarHorarioTest(){
 
@@ -43,7 +45,7 @@ public class HorarioTest {
 
         Assertions.assertNull(horarioBorrado);
     }
-
+    //Metodo para probar el cambio de informacion de un dato existente perteneciente a un Horario en la base de datos
     @Test
     public void actualizarHorarioTest() {
 
@@ -60,7 +62,7 @@ public class HorarioTest {
 
         Assertions.assertEquals("06:00 am",horarioBuscado.getHoraApertura());
     }
-
+    //Metodo para probar el enlistado de todos los Registros de Horarios en la base de datos
     @Test
     @Sql("classpath:horario.sql")
     public void listarHorarioTest(){

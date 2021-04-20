@@ -10,8 +10,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="persistencia" target="11" />
-      <module name="UniLocal" target="11" />
+      <module name="persistencia" target="1.6" />
+      <module name="UniLocal" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
