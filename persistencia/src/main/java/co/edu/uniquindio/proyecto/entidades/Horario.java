@@ -2,10 +2,11 @@ package co.edu.uniquindio.proyecto.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+//Entidad Horario por dias
 @Entity
 public class Horario implements Serializable {
 
+    //Atributos pertenecientes a la Entidad Horario las horas cumplen un formato de "00:00 am" 0 "00:00 pm"
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column( name = "codigo")
@@ -18,19 +19,20 @@ public class Horario implements Serializable {
     @Column( name = "dia", nullable = false)
     private Dia dia;
 
+    //Relacion con lugar de muchos a uno
     @ManyToOne
     private Lugar lugar;
-
+    //Constructor Horario sin parametros
     public Horario(){
         super();
     }
-
+    //Sobre carga de Constructor Horario con parametros de hora de apertura, hora de cierre y dia
     public Horario(String horaApertura, String horaCierre, Dia dia) {
         this.horaApertura = horaApertura;
         this.horaCierre = horaCierre;
         this.dia = dia;
     }
-
+    //metodos Set y Get de los atributos de Horario
     public int getCodigo() {
         return codigo;
     }
@@ -63,7 +65,7 @@ public class Horario implements Serializable {
         this.dia = dia;
     }
 
-
+    //Metodo equals and hashCode para corroborar la llave primaria codigo
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -11,14 +11,14 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 import java.util.List;
-
+//Clase TelefonoTest para las pruebas CRUD de la entidad Telefono
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class TelefonoTest {
 
     @Autowired
     private TelefonoRepo telefonoRepo;
-
+    //Metodo para probar El registro de Telefonos en la base de datos
     @Test
     public void registrarTelefonoTest(){
 
@@ -27,7 +27,7 @@ public class TelefonoTest {
 
         Assertions.assertNotNull(telefonoGuardado);
     }
-
+    //Metodo para probar la eliminacion de Registros de Telefonos existentes en la base de datos
     @Test
     public void eliminarTelefonoTest(){
 
@@ -41,7 +41,7 @@ public class TelefonoTest {
 
         Assertions.assertNull(telefonoBorrado);
     }
-
+    //Metodo para probar el cambio de informacion de un dato existente perteneciente a un Telefono de algun lugar existente en la base de datos
     @Test
     public void actualizarTelefonoTest() {
 
@@ -58,7 +58,7 @@ public class TelefonoTest {
 
         Assertions.assertEquals("3217692122",telefonoBuscado.getNumero());
     }
-
+    //Metodo para probar el enlistado de todos los Registros de Telefonos existentes en la base de datos
     @Test
     @Sql("classpath:telefono.sql")
     public void listarTelefonoTest(){
