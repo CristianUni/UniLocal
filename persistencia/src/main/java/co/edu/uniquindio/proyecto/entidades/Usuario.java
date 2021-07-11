@@ -12,6 +12,9 @@ public class Usuario extends Persona implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<Lugar> lugares;
 
+    @ManyToMany(mappedBy = "usuarios")
+    private List<Lugar> favoritos;
+
     //Relacion de Usuario y Resena de uno a muchos
     @OneToMany(mappedBy = "usuario")
     private List<Resena> resenas;
@@ -24,6 +27,7 @@ public class Usuario extends Persona implements Serializable {
     public Usuario(){
         super();
     }
+
 
     //constructor sobrecargado
     public Usuario(String email, String nombre, String nickname, String contrasena, double latitud, double longitud) {

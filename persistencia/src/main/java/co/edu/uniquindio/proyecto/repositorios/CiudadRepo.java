@@ -11,4 +11,7 @@ Interfaz que sirve para el depósito de datos, extiende de JpaRepository
  */
 @Repository
 public interface CiudadRepo extends JpaRepository<Ciudad, Integer> {
+
+
+
 }
