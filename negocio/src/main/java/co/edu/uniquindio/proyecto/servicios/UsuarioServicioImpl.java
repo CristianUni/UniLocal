@@ -22,7 +22,7 @@ public class UsuarioServicioImpl implements  UsuarioServicio{
     public Usuario registrarUsuario(Usuario u) {
         System.out.println("holaHD");
         Usuario buscado = usuarioRepo.findByEmail(u.getEmail());
-        Usuario UsuarioNick = usuarioRepo.findByNickname(u.getEmail());
+        Usuario UsuarioNick = usuarioRepo.findByNickname(u.getNickname());
         if(buscado!=null){
           //  throw new Exception("El correo electronico ya se encuentra en uso");
         }
