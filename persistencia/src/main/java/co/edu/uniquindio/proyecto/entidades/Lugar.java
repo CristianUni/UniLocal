@@ -45,6 +45,7 @@ public class Lugar implements Serializable {
     //relacion muchos a uno entre lugar y usuario
     @ManyToOne
     private Usuario usuario;
+    @Column(name = "seguidores", nullable = false)
     @ManyToMany
     private List<Usuario> usuarios;
     //relacion uno a muchos entre lugar y resena(entidad propietaria)

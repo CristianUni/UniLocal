@@ -1,9 +1,12 @@
 package co.edu.uniquindio.proyecto.servicios;
 
+import co.edu.uniquindio.proyecto.entidades.Lugar;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.repositorios.LugarRepo;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -15,6 +18,7 @@ public class UsuarioServicioImpl implements  UsuarioServicio{
 
     public UsuarioServicioImpl(UsuarioRepo usuarioRepo) {
         this.usuarioRepo = usuarioRepo;
+
     }
 
 
@@ -35,4 +39,10 @@ public class UsuarioServicioImpl implements  UsuarioServicio{
 
         return usuarioRepo.save(u);
     }
+
+
+
+
+
+
 }
