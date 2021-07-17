@@ -12,6 +12,8 @@ import java.util.List;
 @Repository
 public interface LugarRepo extends JpaRepository<Lugar,Integer> {
 
+    Lugar findByNombre(String nombre);
+
     @Query("select l from Lugar l where l.nombre like %:nombre%")
     List<Lugar> buscarPorCampo( @Param("nombre") String nombre);
 

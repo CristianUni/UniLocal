@@ -11,7 +11,7 @@ import java.util.List;
 public interface UsuarioServicio {
 
     Usuario registrarUsuario(Usuario u) throws Exception;
-
+    Usuario buscarUsuario (String email) throws Exception;
 
 
 

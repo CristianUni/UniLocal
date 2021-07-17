@@ -5,3 +5,4 @@ insert into lugar(descripcion, nombre, direccion, latitud, longitud,categoria_co
 insert into lugar(descripcion, nombre, direccion, latitud, longitud,categoria_codigo) values ("maria","maria del barrio ","carrera 17",29.654156,70.146598,1);
 insert into lugar(descripcion, nombre, direccion, latitud, longitud,categoria_codigo) values ("comidas","doña maria","carrera 8",12.654156,81.146598,1);
 insert into lugar(descripcion, nombre, direccion, latitud, longitud,categoria_codigo) values ("comedias","circo maria","calle 8 carrera 11",12.654156,81.146598,2);
+insert into lugar(descripcion, nombre, direccion, latitud, longitud,categoria_codigo) values ("bebidas","maria","carrera 17",29.654156,70.146598, 2);

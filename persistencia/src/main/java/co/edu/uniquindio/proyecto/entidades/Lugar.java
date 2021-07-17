@@ -133,4 +133,12 @@ public class Lugar implements Serializable {
         this.latitud = latitud;
         this.longitud = longitud;
     }
+
+    public List<Resena> getResena() {
+        return resena;
+    }
+
+    public void setResena(List<Resena> resena) {
+        this.resena = resena;
+    }
 }

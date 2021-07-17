@@ -17,6 +17,9 @@ public class Resena implements Serializable {
     @Column(name = "comentario",length = 500)
     private String comentario;
 
+    @Column(name= "respuesta", length = 500, nullable = true)
+    private String respuesta;
+
     //Relacion de Resena con Lugar de muchos a uno
     @ManyToOne
     private Lugar lugar;
@@ -71,5 +74,29 @@ public class Resena implements Serializable {
     @Override
     public int hashCode() {
         return codigo;
+    }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
+
+    public Lugar getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(Lugar lugar) {
+        this.lugar = lugar;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
