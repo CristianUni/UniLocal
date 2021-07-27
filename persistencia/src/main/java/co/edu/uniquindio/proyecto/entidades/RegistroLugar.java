@@ -48,6 +48,11 @@ public class RegistroLugar implements Serializable {
         super();
     }
 
+    public RegistroLugar(Estado enEspera, Date fechai) {
+        this.estado = enEspera;
+        this.fechaCreacion = fechai;
+    }
+
     /*
     Métodos get y set de la entidad. Los set nos sirve para asignarle valores a los atributos.
     Los get sirven para obtener los valores de los atributos
@@ -81,7 +86,7 @@ public class RegistroLugar implements Serializable {
         return fechaAprobacion;
     }
 
-    public void setFechaAprobacion(Date fecha_aprobacion) {
+    public void setFechaAprobacion(Date fechaAprobacion) {
         this.fechaAprobacion = fechaAprobacion;
     }
 
