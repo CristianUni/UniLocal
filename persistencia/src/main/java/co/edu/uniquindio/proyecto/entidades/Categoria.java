@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,8 +22,8 @@ public class Categoria implements Serializable {
 
 
     //relacion uno a uno categoria y lugar(entidad propietaria)
-    @OneToOne(mappedBy = "categoria")
-    private Lugar lugar;
+    @OneToMany(mappedBy = "categoria")
+    private List<Lugar> lugar;
 
 
     //get y set

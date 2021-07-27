@@ -40,6 +40,22 @@ public class UsuarioServicioImpl implements  UsuarioServicio{
         return usuarioRepo.save(u);
     }
 
+    /*
+    @Author: Jhoiner Lopez
+     */
+    @Override
+    public Usuario buscarUsuario(String email) throws Exception {
+
+        Usuario usuario = usuarioRepo.findByEmail(email);
+
+        if (usuario == null) {
+            throw new Exception("Usuario no existe");
+        }
+
+        return usuario;
+    }
+
+
 
 
 

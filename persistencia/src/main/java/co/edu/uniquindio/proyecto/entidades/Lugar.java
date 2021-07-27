@@ -37,7 +37,7 @@ public class Lugar implements Serializable {
     @OneToMany(mappedBy = "lugar")
     private List<Telefono> telefono;
     //relacion uno a uno entre lugar y categoria
-    @OneToOne
+    @ManyToOne
     private Categoria categoria;
     //relacion muchos a uno entre lugar y ciudad
     @ManyToOne
@@ -132,5 +132,13 @@ public class Lugar implements Serializable {
         this.direccion = direccion;
         this.latitud = latitud;
         this.longitud = longitud;
+    }
+
+    public List<Resena> getResena() {
+        return resena;
+    }
+
+    public void setResena(List<Resena> resena) {
+        this.resena = resena;
     }
 }
