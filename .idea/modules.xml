@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/UniLocal.iml" filepath="$PROJECT_DIR$/UniLocal.iml" />
       <module fileurl="file://$PROJECT_DIR$/negocio/negocio.iml" filepath="$PROJECT_DIR$/negocio/negocio.iml" />
       <module fileurl="file://$PROJECT_DIR$/persistencia/persistencia.iml" filepath="$PROJECT_DIR$/persistencia/persistencia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
     </modules>
   </component>
 </project>
