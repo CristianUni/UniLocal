@@ -12,11 +12,20 @@ public class RegistroLugar implements Serializable {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name = "codigo")
     private int codigo;
+
+    public Lugar getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(Lugar lugar) {
+        this.lugar = lugar;
+    }
+
     /*
-    Atributo de la entidad que es de tipo enum. Este atributo nos indica el estado de el lugar,
-     si está aprobado, rechazado o en espera de aprobación
-     El atributo no puede ser null
-     */
+        Atributo de la entidad que es de tipo enum. Este atributo nos indica el estado de el lugar,
+         si está aprobado, rechazado o en espera de aprobación
+         El atributo no puede ser null
+         */
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "estado", nullable = false)
     private Estado estado;
@@ -117,4 +126,6 @@ public class RegistroLugar implements Serializable {
         this.fechaCreacion = fechaCreacion;
         this.fechaAprobacion = fechaAprobacion;
     }
+
+
 }
