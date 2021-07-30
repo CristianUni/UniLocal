@@ -14,12 +14,10 @@ import java.util.Optional;
 public class LugarServicioImpl  implements LugarServicio {
 
     private final LugarRepo lugarRepo;
-    private final RegistroLugarRepo registroLugarRepo;
 
 
-    public LugarServicioImpl(LugarRepo lugarRepo, RegistroLugarRepo registroLugarRepo) {
+    public LugarServicioImpl(LugarRepo lugarRepo) {
         this.lugarRepo = lugarRepo;
-        this.registroLugarRepo=registroLugarRepo;
     }
 
     //
@@ -76,25 +74,31 @@ public class LugarServicioImpl  implements LugarServicio {
     }
 
     @Override
-    public Lugar crearLugar(Lugar l, RegistroLugar r) throws Exception {
-        if(l.getDireccion().trim().equals("")){
+    public Lugar crearLugar(Lugar l) throws Exception {
+
+        if (l.getDescripcion()==null){
+            l.setDescripcion("");
+        }
+        if(l.getDireccion()==null || l.getDireccion().trim().equals("")){
             throw new Exception("El campo de direccion está vacio ");
         }
-        if(l.getNombre().trim().equals("")){
+        if(l.getNombre()==null || l.getNombre().trim().equals("")){
             throw new Exception("El campo del nombre está vacio ");
         }
+
         if(l.getDescripcion().length()>500){
 
             throw new Exception("La descripción debe contener menos de 500 caracteres");
         }
-        if(l.getDireccion().length()>100 && l.getDireccion() != null){
+        if(l.getDireccion().length()>100){
 
             throw new Exception("La dirección debe contener menos de 100 caracteres");
         }
-        if(l.getNombre().length() > 100 && l.getNombre() != null){
+        if(l.getNombre().length() > 100){
 
             throw new Exception("El nombre debe contener menos de 100 caracteres");
-        } if(l.getDescripcion().length()>500){
+        }
+        if(l.getDescripcion().length()>500){
 
             throw new Exception("La descripción debe contener menos de 500 caracteres");
         }
@@ -106,13 +110,9 @@ public class LugarServicioImpl  implements LugarServicio {
 
             throw new Exception("El rango de la longitud debe ser de -180 a 180");
         }
-        Lugar lugarNuevo= lugarRepo.save(l);
-        r.setLugar(l);
-        RegistroLugar registroLugar= registroLugarRepo.save(r);
 
 
-
-        return lugarNuevo;
+        return lugarRepo.save(l);
 
     }
 

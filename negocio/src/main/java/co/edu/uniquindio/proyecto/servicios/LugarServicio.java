@@ -12,7 +12,7 @@ List<Lugar> buscarPorNombre(String nombre ) throws Exception;
 List<Lugar> buscarPorCategoria(int categoria) throws Exception;
 List<Lugar>  buscarPorCategoriaYNombre(String nombre, int categoria) throws Exception;
 Lugar buscarPorNombreExacto (String nombre) throws Exception;
-Lugar crearLugar(Lugar l, RegistroLugar r) throws Exception;
+Lugar crearLugar(Lugar l) throws Exception;
 void eliminarLugar(Integer id) throws Exception;
 Lugar actualizarLugar(Lugar lugar) throws Exception;
 List<Lugar>  ListaLugares();

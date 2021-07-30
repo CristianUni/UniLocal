@@ -16,7 +16,6 @@ import java.io.Serializable;
 public class LugarBean implements Serializable {
 
     private Lugar lugar;
-    private RegistroLugar registroLugar;
 
     private final LugarServicio lugarServicio;
 
@@ -27,17 +26,15 @@ public class LugarBean implements Serializable {
     @PostConstruct
     public void inicializar(){
         lugar = new Lugar();
-        registroLugar = new RegistroLugar();
     }
 
     public void crearLugar(){
         try {
-            lugarServicio.crearLugar(lugar,registroLugar);
+            lugarServicio.crearLugar(lugar);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Alerta","El lugar se ha creado correctamente");
             FacesContext.getCurrentInstance().addMessage(null,msg);
-        }
-        catch (Exception e){
-            FacesMessage msg=new FacesMessage(FacesMessage.SEVERITY_ERROR,"alerta",e.getMessage());
+        } catch (Exception e){
+            FacesMessage msg=new FacesMessage(FacesMessage.SEVERITY_ERROR,"Alerta",e.getMessage()+" mori");
             FacesContext.getCurrentInstance().addMessage(null,msg);
 
         }
@@ -45,14 +42,6 @@ public class LugarBean implements Serializable {
 
     public Lugar getLugar() {
         return lugar;
-    }
-
-    public RegistroLugar getRegistroLugar() {
-        return registroLugar;
-    }
-
-    public void setRegistroLugar(RegistroLugar registroLugar) {
-        this.registroLugar = registroLugar;
     }
 
     public void setLugar(Lugar lugar) {

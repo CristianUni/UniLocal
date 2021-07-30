@@ -73,8 +73,9 @@ public class LugarServcioTest {
 
         RegistroLugar registroLugarNuevo= new RegistroLugar(Estado.APROBADO, fechaCreacion, fechaAprobacion);
 
-        Lugar lugarGuardado= lugarServicio.crearLugar(lugarNuevo,registroLugarNuevo);
+        Lugar lugarGuardado= lugarServicio.crearLugar(lugarNuevo);
 
+        System.out.println(lugarGuardado.getNombre());
         Assertions.assertNotNull(lugarGuardado);
 
     }
