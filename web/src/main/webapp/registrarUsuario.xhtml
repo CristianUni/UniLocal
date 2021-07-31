@@ -17,20 +17,20 @@
 <h:body>
     <h:form>
         <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel for="nombre_usuario" value="Nombre:" />
-            <p:inputText id="nombre_usuario" value="#{usuarioBean.usuario.nombre}" />
+            <p:outputLabel for="nombre_usuario" value="Nombre:"/>
+            <p:inputText id="nombre_usuario" value="#{usuarioBean.usuario.nombre}" required="true"/>
 
-            <p:outputLabel for="nickname_usuario" value="Nickname:" />
-            <p:inputText id="nickname_usuario" value="#{usuarioBean.usuario.nickname}" />
+            <p:outputLabel for="nickname_usuario" value="Nickname:"/>
+            <p:inputText id="nickname_usuario" value="#{usuarioBean.usuario.nickname}" required="true"/>
 
-            <p:outputLabel for="email_usuario" value="Email:" />
-            <p:inputText id="email_usuario" value="#{usuarioBean.usuario.email}" />
+            <p:outputLabel for="email_usuario" value="Email:"/>
+            <p:inputText id="email_usuario" value="#{usuarioBean.usuario.email}" required="true"/>
 
-            <p:outputLabel for="contrasena_usuario" value="Contraseña:" />
-            <p:inputText id="contrasena_usuario" value="#{usuarioBean.usuario.contrasena}" />
+            <p:outputLabel for="contrasena_usuario" value="Contraseña:"/>
+            <p:inputText id="contrasena_usuario" value="#{usuarioBean.usuario.contrasena}" required="true"/>
         </h:panelGrid>
         <p:commandButton action="#{usuarioBean.registrarUsuario}" value="Registrar"
-                         update="@form" />
+                         update="@form"/>
         <p:growl showDetail="true"/>
     </h:form>
 </h:body>

@@ -1,5 +1,8 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -9,15 +12,19 @@ import java.util.List;
 public class Administrador extends Persona implements Serializable {
 
     //Relacion de Administrador y Moderadores de uno a muchos
+    @Getter
+    @Setter
     @OneToMany(mappedBy = "administrador")
     private List<Moderador> moderadores;
 
     //Relacion de Administrador y reportes de uno a muchos
+    @Getter
+    @Setter
     @OneToMany(mappedBy = "administrador")
     private List<Reporte> reportes;
 
     //contructor sin parametros
-    public Administrador(){
+    public Administrador() {
         super();
     }
 

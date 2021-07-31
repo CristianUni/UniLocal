@@ -30,7 +30,8 @@ public class RegistroLugarServicioTest {
 
     @Test
     public void AutorizarLugarTest() throws Exception {
-        Date fechai = new GregorianCalendar(2020, 03, 1).getTime();/*LocalDate.of(2020, 3, 1)*/;
+        Date fechai = new GregorianCalendar(2020, 03, 1).getTime();/*LocalDate.of(2020, 3, 1)*/
+        ;
         RegistroLugar RegistroLugarNuevo1 = new RegistroLugar(Estado.EN_ESPERA, fechai);
         RegistroLugar RegistroLugarGuardado = this.registroLugarServicio.AutorizarLugares(RegistroLugarNuevo1, true);
         System.out.println(RegistroLugarGuardado.getEstado());

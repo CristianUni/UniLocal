@@ -33,8 +33,8 @@ public class LugarServcioTest {
     public void listarLugaresPorNombreTest() throws Exception {
 
         List<Lugar> lista = lugarServicio.buscarPorNombre("maria");
-        for(Lugar l:lista)
-        System.out.println(l.getNombre());
+        for (Lugar l : lista)
+            System.out.println(l.getNombre());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class LugarServcioTest {
 
         List<Lugar> lista = lugarServicio.buscarPorCategoria(2);
 
-        for(Lugar l:lista) {
+        for (Lugar l : lista) {
             System.out.println(l.getNombre());
 
         }
@@ -55,25 +55,26 @@ public class LugarServcioTest {
     @Sql("classpath:lugares.sql")
     public void buscarPorCategoriaYNombreaTest() throws Exception {
 
-        List<Lugar> lista = lugarServicio.buscarPorCategoriaYNombre("maria",2);
+        List<Lugar> lista = lugarServicio.buscarPorCategoriaYNombre("maria", 2);
 
-        for(Lugar l:lista) {
+        for (Lugar l : lista) {
             System.out.println(l.getNombre());
 
         }
 
 
     }
+
     @Test
     public void crearLugar() throws Exception {
-        Lugar lugarNuevo= new Lugar("restaurante de mariscos","mariamar","carrera 20",20.177776,34.000564);
+        Lugar lugarNuevo = new Lugar("restaurante de mariscos", "mariamar", "carrera 20", 20.177776, 34.000564);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         Date fechaCreacion = sdf.parse("1996/02/14");
         Date fechaAprobacion = sdf.parse("2021/01/16");
 
-        RegistroLugar registroLugarNuevo= new RegistroLugar(Estado.APROBADO, fechaCreacion, fechaAprobacion);
+        RegistroLugar registroLugarNuevo = new RegistroLugar(Estado.APROBADO, fechaCreacion, fechaAprobacion);
 
-        Lugar lugarGuardado= lugarServicio.crearLugar(lugarNuevo);
+        Lugar lugarGuardado = lugarServicio.crearLugar(lugarNuevo);
 
         System.out.println(lugarGuardado.getNombre());
         Assertions.assertNotNull(lugarGuardado);

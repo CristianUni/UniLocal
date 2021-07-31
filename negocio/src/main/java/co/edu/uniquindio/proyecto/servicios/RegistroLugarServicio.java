@@ -4,5 +4,7 @@ import co.edu.uniquindio.proyecto.entidades.RegistroLugar;
 
 public interface RegistroLugarServicio {
     RegistroLugar AutorizarLugares(RegistroLugar r, boolean estado) throws Exception;
-    
+
+    RegistroLugar CrearRegistroLugar(RegistroLugar registroLugar) throws Exception;
+
 }

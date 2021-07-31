@@ -1,6 +1,10 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,8 +13,9 @@ public class RegistroLugar implements Serializable {
 
     //Llave principal de la entidad que en este caso es un código autogenerado de tipo entero
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
+
     private int codigo;
 
     public Lugar getLugar() {
@@ -28,27 +33,34 @@ public class RegistroLugar implements Serializable {
          */
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "estado", nullable = false)
+    @NotBlank(message = "Estado es obligatorio")
     private Estado estado;
     /*
     Atributo de la entidad que es de tipo date. Este atributo nos indica la fecha de creación de la solicitud del registro del lugar
     El atributo no puede ser null
      */
+    @NotBlank(message = "Fecha de creacion es obligatoria")
     @Column(name = "fecha_creacion", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
     /*
     Atributo de la entidad que es de tipo date. Este atributo nos indica la fecha de aprobación de la solicitud del registro del lugar
     El atributo no puede ser null
      */
+    @NotBlank(message = "Fecha de aprobacion es obligatoria")
     @Column(name = "fecha_aprobacion", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAprobacion;
 
     //Relación con la entidad Moderador. Nos indica que un moderador tiene muchas solicitudes de registroLugar
+    @Getter
+    @Setter
     @ManyToOne
     private Moderador moderador;
 
     //Relación con la entidad Lugar. Nos indica que un Lugar tiene una solicitud de registro y un registro tiene un lugar
+    @Getter
+    @Setter
     @OneToOne
     private Lugar lugar;
 

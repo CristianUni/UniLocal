@@ -24,19 +24,20 @@ public class HorarioTest {
 
     //Metodo para probar El registro de Horarios en la base de datos
     @Test
-    public void registrarHorarioTest(){
+    public void registrarHorarioTest() {
 
-        Horario horarioNuevo= new Horario("07:00 am","07:00 pm", Dia.LUNES);
-        Horario horarioGuardado= horarioRepo.save(horarioNuevo);
+        Horario horarioNuevo = new Horario("07:00 am", "07:00 pm", Dia.LUNES);
+        Horario horarioGuardado = horarioRepo.save(horarioNuevo);
 
         Assertions.assertNotNull(horarioGuardado);
     }
+
     //Metodo para probar la eliminacion de Horarios en la base de datos
     @Test
-    public void eliminarHorarioTest(){
+    public void eliminarHorarioTest() {
 
-        Horario horarioNuevo= new Horario("07:00 am","07:00 pm", Dia.LUNES);
-        Horario horarioGuardado=horarioRepo.save(horarioNuevo);
+        Horario horarioNuevo = new Horario("07:00 am", "07:00 pm", Dia.LUNES);
+        Horario horarioGuardado = horarioRepo.save(horarioNuevo);
         int llave = horarioGuardado.getCodigo();
 
         horarioRepo.delete(horarioNuevo);
@@ -45,12 +46,13 @@ public class HorarioTest {
 
         Assertions.assertNull(horarioBorrado);
     }
+
     //Metodo para probar el cambio de informacion de un dato existente perteneciente a un Horario en la base de datos
     @Test
     public void actualizarHorarioTest() {
 
-        Horario horarioNuevo= new Horario("07:00 am","07:00 pm", Dia.LUNES);
-        Horario horarioGuardado=horarioRepo.save(horarioNuevo);
+        Horario horarioNuevo = new Horario("07:00 am", "07:00 pm", Dia.LUNES);
+        Horario horarioGuardado = horarioRepo.save(horarioNuevo);
 
 
         horarioGuardado.setHoraApertura("06:00 am");
@@ -60,12 +62,13 @@ public class HorarioTest {
 
         Horario horarioBuscado = horarioRepo.findById(llave).orElse(null);
 
-        Assertions.assertEquals("06:00 am",horarioBuscado.getHoraApertura());
+        Assertions.assertEquals("06:00 am", horarioBuscado.getHoraApertura());
     }
+
     //Metodo para probar el enlistado de todos los Registros de Horarios en la base de datos
     @Test
     @Sql("classpath:horario.sql")
-    public void listarHorarioTest(){
+    public void listarHorarioTest() {
         List<Horario> lista = horarioRepo.findAll();
         System.out.println(lista);
     }

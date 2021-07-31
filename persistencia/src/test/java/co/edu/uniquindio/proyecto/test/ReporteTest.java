@@ -21,19 +21,19 @@ public class ReporteTest {
 
     //Metodo para simular el registro del reporte en la base de datos
     @Test
-    public void registrarReporteTest(){
+    public void registrarReporteTest() {
 
-        Reporte reporteNuevo= new Reporte("Cantidad masculinos:45, Cantidad femeninos:65");
-        Reporte reporteGuardado= reporteRepo.save(reporteNuevo);
+        Reporte reporteNuevo = new Reporte("Cantidad masculinos:45, Cantidad femeninos:65");
+        Reporte reporteGuardado = reporteRepo.save(reporteNuevo);
 
         Assertions.assertNotNull(reporteGuardado);
     }
 
     //Metodo para simular la eliminacion de un reporte en la base de datos
     @Test
-    public void eliminarReporteTest(){
+    public void eliminarReporteTest() {
 
-        Reporte reporteNuevo= new Reporte("Cantidad masculinos:45, Cantidad femeninos:65");
+        Reporte reporteNuevo = new Reporte("Cantidad masculinos:45, Cantidad femeninos:65");
         reporteRepo.save(reporteNuevo);
 
         reporteRepo.delete(reporteNuevo);
@@ -47,21 +47,21 @@ public class ReporteTest {
     @Test
     public void actualizarReporteTest() {
 
-        Reporte reporteNuevo= new Reporte("Cantidad masculinos:45, Cantidad femeninos:65");
-        Reporte reporteGuardado=reporteRepo.save(reporteNuevo);
+        Reporte reporteNuevo = new Reporte("Cantidad masculinos:45, Cantidad femeninos:65");
+        Reporte reporteGuardado = reporteRepo.save(reporteNuevo);
 
         reporteGuardado.setDescripcion("Cantidad masculinos:60, Cantidad femeninos:85");
         reporteRepo.save(reporteGuardado);
 
         Reporte reporteBuscado = reporteRepo.findById(reporteNuevo.getCodigo()).orElse(null);
 
-        Assertions.assertEquals("Cantidad masculinos:60, Cantidad femeninos:85",reporteBuscado.getDescripcion());
+        Assertions.assertEquals("Cantidad masculinos:60, Cantidad femeninos:85", reporteBuscado.getDescripcion());
     }
 
     //Metodo para simular el enlistado de todos los registros de reporte en la base de datos
     @Test
     @Sql("classpath:usuarios.sql")
-    public void listarReporteTest(){
+    public void listarReporteTest() {
         List<Reporte> lista = reporteRepo.findAll();
         System.out.println(lista);
     }

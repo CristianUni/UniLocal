@@ -1,37 +1,47 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+
 //Entidad Horario por dias
 @Entity
 public class Horario implements Serializable {
 
     //Atributos pertenecientes a la Entidad Horario las horas cumplen un formato de "00:00 am" 0 "00:00 pm"
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column( name = "codigo")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigo")
     private int codigo;
-    @Column( name = "hora_apertura", length = 8, nullable = false)
+    @Column(name = "hora_apertura", length = 8, nullable = false)
     private String horaApertura;
-    @Column( name = "hora_cierre", length = 8, nullable = false)
+    @Column(name = "hora_cierre", length = 8, nullable = false)
     private String horaCierre;
     @Enumerated(EnumType.ORDINAL)
-    @Column( name = "dia", nullable = false)
+    @Column(name = "dia", nullable = false)
     private Dia dia;
 
     //Relacion con lugar de muchos a uno
+    @Getter
+    @Setter
     @ManyToOne
     private Lugar lugar;
+
     //Constructor Horario sin parametros
-    public Horario(){
+    public Horario() {
         super();
     }
+
     //Sobre carga de Constructor Horario con parametros de hora de apertura, hora de cierre y dia
     public Horario(String horaApertura, String horaCierre, Dia dia) {
         this.horaApertura = horaApertura;
         this.horaCierre = horaCierre;
         this.dia = dia;
     }
+
     //metodos Set y Get de los atributos de Horario
     public int getCodigo() {
         return codigo;

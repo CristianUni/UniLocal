@@ -21,19 +21,19 @@ public class AdministradorTest {
 
     //Metodo para simular el registro del administrador en la base de datos
     @Test
-    public void registrarAdministradorTest(){
+    public void registrarAdministradorTest() {
 
-        Administrador administradorNuevo= new Administrador("juanito@gmail.com","juan manolo","Juannixo12","Elcapojuan12",20.124561,65.595684);
-        Administrador administradorGuardado= administradorRepo.save(administradorNuevo);
+        Administrador administradorNuevo = new Administrador("juanito@gmail.com", "juan manolo", "Juannixo12", "Elcapojuan12", 20.124561, 65.595684);
+        Administrador administradorGuardado = administradorRepo.save(administradorNuevo);
 
         Assertions.assertNotNull(administradorGuardado);
     }
 
     //Metodo para simular la eliminacion de un administrador en la base de datos
     @Test
-    public void eliminarAdministradorTest(){
+    public void eliminarAdministradorTest() {
 
-        Administrador administradorNuevo= new Administrador("juanito@gmail.com","juan manolo","Juannixo12","Elcapojuan12",20.124561,65.595684);
+        Administrador administradorNuevo = new Administrador("juanito@gmail.com", "juan manolo", "Juannixo12", "Elcapojuan12", 20.124561, 65.595684);
         administradorRepo.save(administradorNuevo);
 
         administradorRepo.delete(administradorNuevo);
@@ -47,21 +47,21 @@ public class AdministradorTest {
     @Test
     public void actualizarAdministradorTest() {
 
-        Administrador administradorNuevo= new Administrador("juanito@gmail.com","juan manolo","Juannixo12","Elcapojuan12",20.124561,65.595684);
-        Administrador administradorGuardado=administradorRepo.save(administradorNuevo);
+        Administrador administradorNuevo = new Administrador("juanito@gmail.com", "juan manolo", "Juannixo12", "Elcapojuan12", 20.124561, 65.595684);
+        Administrador administradorGuardado = administradorRepo.save(administradorNuevo);
 
         administradorGuardado.setContrasena("estanosemeolvida123");
         administradorRepo.save(administradorGuardado);
 
         Administrador administradorBuscado = administradorRepo.findById("juanito@gmail.com").orElse(null);
 
-        Assertions.assertEquals("estanosemeolvida123",administradorBuscado.getContrasena());
+        Assertions.assertEquals("estanosemeolvida123", administradorBuscado.getContrasena());
     }
 
     //Metodo para simular el enlistado de todos los registros de administrador en la base de datos
     @Test
     @Sql("classpath:administradores.sql")
-    public void listarAdministradorTest(){
+    public void listarAdministradorTest() {
         List<Administrador> lista = administradorRepo.findAll();
         System.out.println(lista);
     }

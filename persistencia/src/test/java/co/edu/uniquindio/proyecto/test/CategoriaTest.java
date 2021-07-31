@@ -21,19 +21,19 @@ public class CategoriaTest {
 
     //metodo para realizar la pruba de registrar una categoria
     @Test
-    public void registrarCategoriaTest(){
+    public void registrarCategoriaTest() {
 
-        Categoria categoriaNuevo= new Categoria("restaurante de mariscos","mariamar");
-        Categoria categoriaGuardada= categoriaRepo.save(categoriaNuevo);
+        Categoria categoriaNuevo = new Categoria("restaurante de mariscos", "mariamar");
+        Categoria categoriaGuardada = categoriaRepo.save(categoriaNuevo);
 
         Assertions.assertNotNull(categoriaGuardada);
     }
 
     //metodo para realizar la pruba de eliminar una categoria
     @Test
-    public void eliminarCategoriaTest(){
+    public void eliminarCategoriaTest() {
 
-        Categoria categoriaNuevo= new Categoria("comida callejera","calleperro");
+        Categoria categoriaNuevo = new Categoria("comida callejera", "calleperro");
         categoriaRepo.save(categoriaNuevo);
 
         categoriaRepo.delete(categoriaNuevo);
@@ -47,22 +47,22 @@ public class CategoriaTest {
     @Test
     public void actualizarCategoriaTest() {
 
-        Categoria categoriaNuevo= new Categoria("restauante vegano","papucity");
-        Categoria categoriaGuardado=categoriaRepo.save(categoriaNuevo);
+        Categoria categoriaNuevo = new Categoria("restauante vegano", "papucity");
+        Categoria categoriaGuardado = categoriaRepo.save(categoriaNuevo);
 
         categoriaGuardado.setDescripcion("fabulosa comida arabe");
         categoriaRepo.save(categoriaGuardado);
 
         Categoria categoriaBuscado = categoriaRepo.findById(categoriaGuardado.getCodigo()).orElse(null);
 
-        Assertions.assertEquals("fabulosa comida arabe",categoriaBuscado.getDescripcion());
+        Assertions.assertEquals("fabulosa comida arabe", categoriaBuscado.getDescripcion());
     }
 
     //nombre de clase en sql
     //añadir datos a la tabla
     @Test
     @Sql("classpath:categorias.sql")
-    public void listarCategoriaTest(){
+    public void listarCategoriaTest() {
         List<Categoria> lista = categoriaRepo.findAll();
         System.out.println(lista);
     }

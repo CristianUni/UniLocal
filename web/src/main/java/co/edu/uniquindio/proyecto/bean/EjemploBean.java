@@ -13,8 +13,8 @@ public class EjemploBean implements Serializable {
 
     public void cambiarValores() {
         String aux = atributo1;
-        atributo1= atributo2;
-        atributo2= aux;
+        atributo1 = atributo2;
+        atributo2 = aux;
     }
 
     public String getAtributo1() {

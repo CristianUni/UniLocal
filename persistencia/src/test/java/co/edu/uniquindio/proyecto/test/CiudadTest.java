@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
+
 /*
 Clase que sirve para hacer los respectivas pruebas unitarias del CRUD de la entidad Ciudad
  */
@@ -24,20 +25,20 @@ public class CiudadTest {
 
     //Método de prueba para registrar una ciudad
     @Test
-    public void registrarCiudadTest(){
+    public void registrarCiudadTest() {
 
-        Ciudad ciudadNueva= new Ciudad("Armenia");
-        Ciudad ciudadGuardada= ciudadRepo.save(ciudadNueva);
+        Ciudad ciudadNueva = new Ciudad("Armenia");
+        Ciudad ciudadGuardada = ciudadRepo.save(ciudadNueva);
 
         Assertions.assertNotNull(ciudadGuardada);
     }
 
     //Método de prueba para eliminar una ciudad
     @Test
-    public void eliminarCiudadTest(){
+    public void eliminarCiudadTest() {
 
-        Ciudad ciudadNueva= new Ciudad("Circasia");
-        Ciudad ciudadGuardada=ciudadRepo.save(ciudadNueva);
+        Ciudad ciudadNueva = new Ciudad("Circasia");
+        Ciudad ciudadGuardada = ciudadRepo.save(ciudadNueva);
         int llave = ciudadGuardada.getCodigo();
 
         ciudadRepo.delete(ciudadNueva);
@@ -51,8 +52,8 @@ public class CiudadTest {
     @Test
     public void actualizarCiudadTest() {
 
-        Ciudad ciudadNueva= new Ciudad("Calarcá");
-        Ciudad ciudadGuardada= ciudadRepo.save(ciudadNueva);
+        Ciudad ciudadNueva = new Ciudad("Calarcá");
+        Ciudad ciudadGuardada = ciudadRepo.save(ciudadNueva);
         int llave = ciudadGuardada.getCodigo();
 
         ciudadGuardada.setNombre("Quimbaya");
@@ -60,13 +61,13 @@ public class CiudadTest {
 
         Ciudad ciudadBuscada = ciudadRepo.findById(llave).orElse(null);
 
-        Assertions.assertEquals("Quimbaya",ciudadBuscada.getNombre());
+        Assertions.assertEquals("Quimbaya", ciudadBuscada.getNombre());
     }
 
     //Método de prueba para listar los datos de una base de datos de sql
     @Test
     @Sql("classpath:ciudades.sql")
-    public void listarCiudadesTest(){
+    public void listarCiudadesTest() {
         List<Ciudad> lista = ciudadRepo.findAll();
         System.out.println(lista);
     }

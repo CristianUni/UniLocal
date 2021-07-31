@@ -34,17 +34,16 @@ public class ResenaServicioTest {
     private UsuarioServicio usuarioServicio;
 
 
-
     @Test
     @Sql("classpath:lugares.sql")
     @Sql("classpath:resenas.sql")
     @Sql("classpath:usuarios.sql")
-    public void registrarResena () throws Exception {
+    public void registrarResena() throws Exception {
 
-        Resena resena = new Resena(3,"Buen lugar");
-        Resena resena2 = new Resena(1,"Mal lugar");
-        Resena resena3 = new Resena(2,"Regular");
-        Lugar lugar =  lugarServicio.buscarPorNombreExacto("maria");
+        Resena resena = new Resena(3, "Buen lugar");
+        Resena resena2 = new Resena(1, "Mal lugar");
+        Resena resena3 = new Resena(2, "Regular");
+        Lugar lugar = lugarServicio.buscarPorNombreExacto("maria");
 
         Usuario usuario = usuarioServicio.buscarUsuario("laura@outlook.es");
         resena.setLugar(lugar);
@@ -63,11 +62,11 @@ public class ResenaServicioTest {
         resenaServicio.registrarComentario(resena3);
 
 
-        Lugar lugar1 =  lugarServicio.buscarPorNombreExacto("maria");
+        Lugar lugar1 = lugarServicio.buscarPorNombreExacto("maria");
 
         List<Resena> r1 = lugar1.getResena();
 
-        for (Resena r: r1 ) {
+        for (Resena r : r1) {
 
             System.out.println("Comentario: " + r.getComentario() + "  " + "usuario: " + r.getUsuario().getNombre());
 

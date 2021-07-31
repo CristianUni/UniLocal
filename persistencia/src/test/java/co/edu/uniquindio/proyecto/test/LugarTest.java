@@ -22,19 +22,19 @@ public class LugarTest {
 
     //metodo para registrar un lugar
     @Test
-    public void registrarLugarTest(){
+    public void registrarLugarTest() {
 
-        Lugar lugarNuevo= new Lugar("restaurante de mariscos","mariamar","carrera 20",20.177776,34.000564);
-        Lugar lugarGuardada= lugarRepo.save(lugarNuevo);
+        Lugar lugarNuevo = new Lugar("restaurante de mariscos", "mariamar", "carrera 20", 20.177776, 34.000564);
+        Lugar lugarGuardada = lugarRepo.save(lugarNuevo);
 
         Assertions.assertNotNull(lugarGuardada);
     }
 
     //metodo para eliminar un lugar
     @Test
-    public void eliminarLugarTest(){
+    public void eliminarLugarTest() {
 
-        Lugar lugarNuevo= new Lugar("restaurante de mariscos","mariamar","carrera 20",20.177776,34.000564);
+        Lugar lugarNuevo = new Lugar("restaurante de mariscos", "mariamar", "carrera 20", 20.177776, 34.000564);
         lugarRepo.save(lugarNuevo);
 
         lugarRepo.delete(lugarNuevo);
@@ -48,22 +48,22 @@ public class LugarTest {
     @Test
     public void actualizarLugarTest() {
 
-        Lugar lugarNuevo= new Lugar("restaurante de mariscos","mariamar","carrera 20",20.177776,34.000564);
-        Lugar lugarGuardado=lugarRepo.save(lugarNuevo);
+        Lugar lugarNuevo = new Lugar("restaurante de mariscos", "mariamar", "carrera 20", 20.177776, 34.000564);
+        Lugar lugarGuardado = lugarRepo.save(lugarNuevo);
 
         lugarGuardado.setDescripcion("fabulosa comida arabe");
         lugarRepo.save(lugarGuardado);
 
         Lugar lugarBuscado = lugarRepo.findById(lugarGuardado.getId()).orElse(null);
 
-        Assertions.assertEquals("fabulosa comida arabe",lugarBuscado.getDescripcion());
+        Assertions.assertEquals("fabulosa comida arabe", lugarBuscado.getDescripcion());
     }
 
     //nombre de clase en sql
     //añadir datos a la tabla
     @Test
     @Sql("classpath:lugares.sql")
-    public void listarUsuariosTest(){
+    public void listarUsuariosTest() {
         List<Lugar> lista = lugarRepo.findAll();
         System.out.println(lista);
     }

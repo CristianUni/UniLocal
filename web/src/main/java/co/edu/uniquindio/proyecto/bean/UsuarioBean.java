@@ -21,18 +21,18 @@ public class UsuarioBean implements Serializable {
     private Usuario usuario;
 
     @PostConstruct
-    public void inicializar () {
+    public void inicializar() {
         this.usuario = new Usuario();
     }
 
-    public void registrarUsuario(){
+    public void registrarUsuario() {
         try {
             usuarioServicio.registrarUsuario(usuario);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "El registro fue exitoso");
-            FacesContext.getCurrentInstance().addMessage(null,msg);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage(null,msg);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 

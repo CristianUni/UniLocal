@@ -1,5 +1,8 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -12,10 +15,12 @@ public class Imagen {
     @Column(name = "codigo")
     private int codigo;
     //atributo que sirve para guardar la ruta de la imagen
-    @Column(name = "link",length = 1000, nullable = false)
+    @Column(name = "link", length = 1000, nullable = false)
     private String link;
 
     //Relación con la entidad Lugar que nos indica que la entidad Lugar tiene muchas Imagenes.
+    @Getter
+    @Setter
     @ManyToOne
     private Lugar lugar;
 
@@ -52,12 +57,12 @@ public class Imagen {
     }
 
     //Constructor vacío de la entidad
-    public Imagen(){
+    public Imagen() {
         super();
     }
 
     //Constructor sobrecargado que recibe por parámetro el link, que viene siendo la ruta donde se almacena la imagen
-    public Imagen( String link) {
+    public Imagen(String link) {
         this.link = link;
     }
 

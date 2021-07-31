@@ -21,19 +21,19 @@ public class ModeradorTest {
 
     //Metodo para simular el registro del moderador en la base de datos
     @Test
-    public void registrarModeradorTest(){
+    public void registrarModeradorTest() {
 
-        Moderador moderadorNuevo= new Moderador("juanito@gmail.com","juan manolo","Juannixo12","Elcapojuan12",20.124561,65.595684);
-        Moderador moderadorGuardado= moderadorRepo.save(moderadorNuevo);
+        Moderador moderadorNuevo = new Moderador("juanito@gmail.com", "juan manolo", "Juannixo12", "Elcapojuan12", 20.124561, 65.595684);
+        Moderador moderadorGuardado = moderadorRepo.save(moderadorNuevo);
 
         Assertions.assertNotNull(moderadorGuardado);
     }
 
     //Metodo para simular la eliminacion de un moderador en la base de datos
     @Test
-    public void eliminarModeradorTest(){
+    public void eliminarModeradorTest() {
 
-        Moderador moderadorNuevo= new Moderador("juanito@gmail.com","juan manolo","Juannixo12","Elcapojuan12",20.124561,65.595684);
+        Moderador moderadorNuevo = new Moderador("juanito@gmail.com", "juan manolo", "Juannixo12", "Elcapojuan12", 20.124561, 65.595684);
         moderadorRepo.save(moderadorNuevo);
 
         moderadorRepo.delete(moderadorNuevo);
@@ -47,21 +47,21 @@ public class ModeradorTest {
     @Test
     public void actualizarModeradorTest() {
 
-        Moderador moderadorNuevo= new Moderador("juanito@gmail.com","juan manolo","Juannixo12","Elcapojuan12",20.124561,65.595684);
-        Moderador moderadorGuardado=moderadorRepo.save(moderadorNuevo);
+        Moderador moderadorNuevo = new Moderador("juanito@gmail.com", "juan manolo", "Juannixo12", "Elcapojuan12", 20.124561, 65.595684);
+        Moderador moderadorGuardado = moderadorRepo.save(moderadorNuevo);
 
         moderadorGuardado.setContrasena("estanosemeolvida123");
         moderadorRepo.save(moderadorGuardado);
 
         Moderador moderadorBuscado = moderadorRepo.findById("juanito@gmail.com").orElse(null);
 
-        Assertions.assertEquals("estanosemeolvida123",moderadorBuscado.getContrasena());
+        Assertions.assertEquals("estanosemeolvida123", moderadorBuscado.getContrasena());
     }
 
     //Metodo para simular el enlistado de todos los registros de moderador en la base de datos
     @Test
     @Sql("classpath:moderadores.sql")
-    public void listarModeradorTest(){
+    public void listarModeradorTest() {
         List<Moderador> lista = moderadorRepo.findAll();
         System.out.println(lista);
     }

@@ -10,9 +10,11 @@ import java.io.Serializable;
 public class InicioBean implements Serializable {
 
     private String mensaje = "Hola mundo, inicio desde bean";
+
     public String getMensaje() {
         return mensaje;
     }
+
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }

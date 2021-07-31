@@ -34,8 +34,8 @@ public class RegistroLugarTest {
         Date fechaCreacion = sdf.parse("1996/02/14");
         Date fechaAprobacion = sdf.parse("2021/01/16");
 
-        RegistroLugar registroLugarNuevo= new RegistroLugar(Estado.APROBADO, fechaCreacion, fechaAprobacion);
-        RegistroLugar registroLugarGuardado= registroLugarRepo.save(registroLugarNuevo);
+        RegistroLugar registroLugarNuevo = new RegistroLugar(Estado.APROBADO, fechaCreacion, fechaAprobacion);
+        RegistroLugar registroLugarGuardado = registroLugarRepo.save(registroLugarNuevo);
 
         Assertions.assertNotNull(registroLugarGuardado);
     }
@@ -48,8 +48,8 @@ public class RegistroLugarTest {
         Date fechaCreacion = sdf.parse("1996/02/14");
         Date fechaAprobacion = sdf.parse("2021/01/16");
 
-        RegistroLugar registroLugarNuevo= new RegistroLugar(Estado.EN_ESPERA, fechaCreacion, fechaAprobacion);
-        RegistroLugar registroLugarGuardado= registroLugarRepo.save(registroLugarNuevo);
+        RegistroLugar registroLugarNuevo = new RegistroLugar(Estado.EN_ESPERA, fechaCreacion, fechaAprobacion);
+        RegistroLugar registroLugarGuardado = registroLugarRepo.save(registroLugarNuevo);
         int llave = registroLugarGuardado.getCodigo();
 
         registroLugarRepo.delete(registroLugarNuevo);
@@ -58,6 +58,7 @@ public class RegistroLugarTest {
 
         Assertions.assertNull(registroLugarBorrado);
     }
+
     //Método de prueba para actualizar el estado de un registro
     @Test
     public void actualizarRegistroLugarTest() throws ParseException {
@@ -66,8 +67,8 @@ public class RegistroLugarTest {
         Date fechaCreacion = sdf.parse("1996/02/14");
         Date fechaAprobacion = sdf.parse("2021/01/16");
 
-        RegistroLugar registroLugarNuevo= new RegistroLugar(Estado.EN_ESPERA, fechaCreacion, fechaAprobacion);
-        RegistroLugar registroLugarGuardado= registroLugarRepo.save(registroLugarNuevo);
+        RegistroLugar registroLugarNuevo = new RegistroLugar(Estado.EN_ESPERA, fechaCreacion, fechaAprobacion);
+        RegistroLugar registroLugarGuardado = registroLugarRepo.save(registroLugarNuevo);
 
         int llave = registroLugarGuardado.getCodigo();
 
@@ -76,13 +77,13 @@ public class RegistroLugarTest {
 
         RegistroLugar registroLugarBuscado = registroLugarRepo.findById(llave).orElse(null);
 
-        Assertions.assertEquals(Estado.APROBADO,registroLugarBuscado.getEstado());
+        Assertions.assertEquals(Estado.APROBADO, registroLugarBuscado.getEstado());
     }
 
     //Método de prueba para listar los datos de una base de datos de sql
     @Test
     @Sql("classpath:registroLugar.sql")
-    public void listarRegistroLugaresTest(){
+    public void listarRegistroLugaresTest() {
         List<RegistroLugar> lista = registroLugarRepo.findAll();
         System.out.println(lista);
     }

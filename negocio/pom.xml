@@ -12,7 +12,8 @@
     <artifactId>negocio</artifactId>
     <name>Proyecto de negocio</name>
     <description>Proyecto que representa la lógica de negocio y el acceso a los
-        datos</description>
+        datos
+    </description>
     <dependencies>
         <dependency>
             <groupId>co.edu.uniquindio</groupId>

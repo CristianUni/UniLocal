@@ -24,20 +24,20 @@ public class ImagenTest {
 
     //Método de prueba para registrar una Imagen
     @Test
-    public void registrarImagenTest(){
+    public void registrarImagenTest() {
 
-        Imagen imagenNueva= new Imagen("c:/imagen/img.jpg");
-        Imagen imagenGuardada= imagenRepo.save(imagenNueva);
+        Imagen imagenNueva = new Imagen("c:/imagen/img.jpg");
+        Imagen imagenGuardada = imagenRepo.save(imagenNueva);
 
         Assertions.assertNotNull(imagenGuardada);
     }
 
     //Método de prueba para eliminar una Imagen
     @Test
-    public void eliminarImagenTest(){
+    public void eliminarImagenTest() {
 
-        Imagen imagenNueva= new Imagen("c:/imagen/img.jpg");
-        Imagen imagenGuardada=imagenRepo.save(imagenNueva);
+        Imagen imagenNueva = new Imagen("c:/imagen/img.jpg");
+        Imagen imagenGuardada = imagenRepo.save(imagenNueva);
         int llave = imagenGuardada.getCodigo();
 
         imagenRepo.delete(imagenNueva);
@@ -51,8 +51,8 @@ public class ImagenTest {
     @Test
     public void actualizarImagenTest() {
 
-        Imagen imagenNueva= new Imagen("c:/imagen/im33g.jpg");
-        Imagen imagenGuardada= imagenRepo.save(imagenNueva);
+        Imagen imagenNueva = new Imagen("c:/imagen/im33g.jpg");
+        Imagen imagenGuardada = imagenRepo.save(imagenNueva);
         int llave = imagenGuardada.getCodigo();
 
         imagenGuardada.setLink("c:/usuarios/imagenes/nueva.jpg");
@@ -60,13 +60,13 @@ public class ImagenTest {
 
         Imagen imagenBuscada = imagenRepo.findById(llave).orElse(null);
 
-        Assertions.assertEquals("c:/usuarios/imagenes/nueva.jpg",imagenBuscada.getLink());
+        Assertions.assertEquals("c:/usuarios/imagenes/nueva.jpg", imagenBuscada.getLink());
     }
 
     //Método de prueba para listar los datos de una base de datos de sql
     @Test
     @Sql("classpath:imagenes.sql")
-    public void listarImagenesTest(){
+    public void listarImagenesTest() {
         List<Imagen> lista = imagenRepo.findAll();
         System.out.println(lista);
     }

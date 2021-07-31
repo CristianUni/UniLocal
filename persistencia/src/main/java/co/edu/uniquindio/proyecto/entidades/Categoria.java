@@ -1,78 +1,53 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import lombok.*;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Categoria implements Serializable {
 
 
     //atributos de la calse Categoria
     //llave primaria id
     @Id
+    @EqualsAndHashCode.Include
+    @Getter
+    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name = "codigo")
+    @Column(name = "codigo")
     private int codigo;
-    @Column( name = "descripcion", length = 200)
+
+    @Getter
+    @Setter
+    @Size(max=200, message = "El tamaño maximo debe ser de 200 caracteres")
+    @Column(name = "descripcion", length = 200)
     private String descripcion;
-    @Column( name = "nombre", length = 50, nullable = false)
+    @Getter
+    @Setter
+    @NotBlank(message = "El campo Nombre es obligatorio")
+    @Size(max = 50, message = "El tamaño maximo debe ser de 50 caracteres")
+    @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
 
 
     //relacion uno a uno categoria y lugar(entidad propietaria)
+    @Getter
+    @Setter
     @OneToMany(mappedBy = "categoria")
     private List<Lugar> lugar;
 
-
-    //get y set
-    public int getCodigo() {
-        return codigo;
+    public Categoria (String nombre, String descripcion) {
+        this.nombre=nombre;
+        this.descripcion=descripcion;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-
-    //metodos para comparar la llave primaria
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Categoria categoria = (Categoria) o;
-        return Objects.equals(codigo, categoria.codigo);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(codigo);
-    }
-
-
-    //constructor vacio
-    public Categoria(){super(); }
-
-    //constructor Categoria sobrecarga
-    public Categoria(String descripcion, String nombre) {
-        this.descripcion = descripcion;
-        this.nombre = nombre;
-    }
 }

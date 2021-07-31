@@ -1,24 +1,32 @@
 package co.edu.uniquindio.proyecto.servicios;
 
+import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.Lugar;
 import co.edu.uniquindio.proyecto.entidades.RegistroLugar;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
+import co.edu.uniquindio.proyecto.repositorios.CiudadRepo;
 import co.edu.uniquindio.proyecto.repositorios.LugarRepo;
 import co.edu.uniquindio.proyecto.repositorios.RegistroLugarRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LugarServicioImpl  implements LugarServicio {
+public class LugarServicioImpl implements LugarServicio {
 
     private final LugarRepo lugarRepo;
+    private final CategoriaRepo categoriaRepo;
 
 
-    public LugarServicioImpl(LugarRepo lugarRepo) {
+    public LugarServicioImpl(LugarRepo lugarRepo, CategoriaRepo categoriaRepo) {
         this.lugarRepo = lugarRepo;
+        this.categoriaRepo = categoriaRepo;
+
     }
+
 
     //
     @Override
@@ -64,10 +72,10 @@ public class LugarServicioImpl  implements LugarServicio {
 
     //
 
-    public Lugar buscarPorNombreExacto (String nombre) throws Exception {
+    public Lugar buscarPorNombreExacto(String nombre) throws Exception {
         Lugar lugar = lugarRepo.findByNombre(nombre);
 
-        if (lugar == null){
+        if (lugar == null) {
             throw new Exception("Lugar no encontrado");
         }
         return lugar;
@@ -76,37 +84,38 @@ public class LugarServicioImpl  implements LugarServicio {
     @Override
     public Lugar crearLugar(Lugar l) throws Exception {
 
-        if (l.getDescripcion()==null){
+
+        if (l.getDescripcion() == null) {
             l.setDescripcion("");
         }
-        if(l.getDireccion()==null || l.getDireccion().trim().equals("")){
+        if (l.getDireccion() == null || l.getDireccion().trim().equals("")) {
             throw new Exception("El campo de direccion está vacio ");
         }
-        if(l.getNombre()==null || l.getNombre().trim().equals("")){
+        if (l.getNombre() == null || l.getNombre().trim().equals("")) {
             throw new Exception("El campo del nombre está vacio ");
         }
 
-        if(l.getDescripcion().length()>500){
+        if (l.getDescripcion().length() > 500) {
 
             throw new Exception("La descripción debe contener menos de 500 caracteres");
         }
-        if(l.getDireccion().length()>100){
+        if (l.getDireccion().length() > 100) {
 
             throw new Exception("La dirección debe contener menos de 100 caracteres");
         }
-        if(l.getNombre().length() > 100){
+        if (l.getNombre().length() > 100) {
 
             throw new Exception("El nombre debe contener menos de 100 caracteres");
         }
-        if(l.getDescripcion().length()>500){
+        if (l.getDescripcion().length() > 500) {
 
             throw new Exception("La descripción debe contener menos de 500 caracteres");
         }
-        if(l.getLatitud()>90 || l.getLatitud()<-90) {
+        if (l.getLatitud() > 90 || l.getLatitud() < -90) {
 
             throw new Exception("El rango de la latitud debe ser de -90 a 90");
         }
-        if(l.getLongitud()>180 || l.getLongitud()<-180){
+        if (l.getLongitud() > 180 || l.getLongitud() < -180) {
 
             throw new Exception("El rango de la longitud debe ser de -180 a 180");
         }
@@ -115,7 +124,6 @@ public class LugarServicioImpl  implements LugarServicio {
         return lugarRepo.save(l);
 
     }
-
 
 
     @Override
@@ -135,12 +143,27 @@ public class LugarServicioImpl  implements LugarServicio {
 
     @Override
     public Lugar obtenerLugar(Integer id) throws Exception {
-        Optional<Lugar> objeto=lugarRepo.findById(id);
+        Optional<Lugar> objeto = lugarRepo.findById(id);
 
-        if(objeto.isEmpty()){
+        if (objeto.isEmpty()) {
             throw new Exception("El id no es valido");
         }
         return objeto.get();
     }
+
+    @Override
+    public Categoria crearCategoria(Categoria categoria) throws Exception {
+        return categoriaRepo.save(categoria);
+    }
+
+    @Override
+    public Categoria obtenerCategoria(Integer id) throws Exception {
+        Optional<Categoria> objeto = categoriaRepo.findById(id);
+        if (objeto.isEmpty()) {
+            throw new Exception("El Id no es valido");
+        }
+        return objeto.get();
+    }
+
 
 }

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 //repositorio categoria con llave integer
 @Repository
-public interface CategoriaRepo extends JpaRepository<Categoria,Integer> {
+public interface CategoriaRepo extends JpaRepository<Categoria, Integer> {
 }

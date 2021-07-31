@@ -1,6 +1,11 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 //Entidad Reporte
@@ -11,15 +16,19 @@ public class Reporte implements Serializable {
     @Column(name = "codigo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+    @NotBlank(message = "El campo de Descripción es obligatorio")
+    @Size(max = 1000, message = "El tamaño maximo debe ser de 1000 caracteres")
     @Column(name = "descripcion", length = 1000, nullable = false)
     private String descripcion;
 
     //Relacion de Reporte y Adminstrador de muchos a uno
+    @Getter
+    @Setter
     @ManyToOne
     private Administrador administrador;
 
     //contructor sin parametros
-    public Reporte(){
+    public Reporte() {
         super();
     }
 

@@ -24,7 +24,7 @@ public class RegistroLugarServicioImpl implements RegistroLugarServicio {
             r.setEstado(Estado.APROBADO);
             Date ahora = new Date();
             r.setFechaAprobacion(ahora);
-            System.out.println("el contexto tiene un precio"+ ahora);
+            System.out.println("el contexto tiene un precio" + ahora);
             PrintStream var10000 = System.out;
             LocalDate var10001 = LocalDate.now();
             var10000.println(var10001 + " fechisimo" + r.getFechaAprobacion());
@@ -35,5 +35,12 @@ public class RegistroLugarServicioImpl implements RegistroLugarServicio {
         }
 
         return r;
+    }
+
+    @Override
+    public RegistroLugar CrearRegistroLugar(RegistroLugar registroLugar) throws Exception {
+
+
+        return registroLugarRepo.save(registroLugar);
     }
 }

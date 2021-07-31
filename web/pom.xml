@@ -13,7 +13,8 @@
     <name>Proyecto web</name>
 
     <description>Proyecto que proporciona la interfaz gráfica de usuario web para los
-        clientes</description>
+        clientes
+    </description>
     <properties>
         <joinfaces.version>4.4.3</joinfaces.version>
     </properties>

@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Service
-public class UsuarioServicioImpl implements  UsuarioServicio{
+public class UsuarioServicioImpl implements UsuarioServicio {
 
 
     private final UsuarioRepo usuarioRepo;
@@ -27,29 +27,28 @@ public class UsuarioServicioImpl implements  UsuarioServicio{
         System.out.println("holaHD");
         Usuario buscado = usuarioRepo.findByEmail(u.getEmail());
         Usuario UsuarioNick = usuarioRepo.findByNickname(u.getNickname());
-        if(buscado!=null){
+        if (buscado != null) {
             throw new Exception("El correo electronico ya se encuentra en uso");
         }
-        if (UsuarioNick!=null){
+        if (UsuarioNick != null) {
             throw new Exception("El NickName del usuario ya se encuentra registrado");
         }
-        if (UsuarioNick!=null){
+        if (UsuarioNick != null) {
             throw new Exception("El NickName del usuario ya se encuentra registrado");
         }
-        if(u.getNickname().length()>100){
+        if (u.getNickname().length() > 100) {
             throw new Exception("El NickName debe contener menos de 100 caracteres");
         }
-        if(u.getEmail().length()>200){
+        if (u.getEmail().length() > 200) {
             throw new Exception("El email debe contener menos de 200 caracteres");
         }
-        if(u.getNombre().length()>200){
+        if (u.getNombre().length() > 200) {
             throw new Exception("El nombre debe contener menos de 200 caracteres");
         }
-        if(u.getContrasena().length()>200){
+        if (u.getContrasena().length() > 200) {
             throw new Exception("La contraseña debe contener menos de 200 caracteres");
-        }
-        else{
-            System.out.println(u.getEmail()+""+u.getEmail());
+        } else {
+            System.out.println(u.getEmail() + "" + u.getEmail());
         }
 
         return usuarioRepo.save(u);
@@ -69,11 +68,6 @@ public class UsuarioServicioImpl implements  UsuarioServicio{
 
         return usuario;
     }
-
-
-
-
-
 
 
 }
