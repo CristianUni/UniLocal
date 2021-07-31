@@ -38,7 +38,7 @@ public class CiudadServicioImpl implements CiudadServicio {
 
     @Override
     public List<Ciudad> listarCiudades() {
-        return null;
+        return ciudadRepo.findAll();
     }
 
 }

@@ -1,16 +1,11 @@
 package co.edu.uniquindio.proyecto.servicios;
 
-import co.edu.uniquindio.proyecto.entidades.Categoria;
-import co.edu.uniquindio.proyecto.entidades.Lugar;
-import co.edu.uniquindio.proyecto.entidades.RegistroLugar;
-import co.edu.uniquindio.proyecto.entidades.Usuario;
-import co.edu.uniquindio.proyecto.repositorios.CategoriaRepo;
-import co.edu.uniquindio.proyecto.repositorios.CiudadRepo;
-import co.edu.uniquindio.proyecto.repositorios.LugarRepo;
-import co.edu.uniquindio.proyecto.repositorios.RegistroLugarRepo;
+import co.edu.uniquindio.proyecto.entidades.*;
+import co.edu.uniquindio.proyecto.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +14,15 @@ public class LugarServicioImpl implements LugarServicio {
 
     private final LugarRepo lugarRepo;
     private final CategoriaRepo categoriaRepo;
+    private final ResenaRepo resenaRepo ;
+    private final TelefonoRepo telefonoRepo;
 
 
-    public LugarServicioImpl(LugarRepo lugarRepo, CategoriaRepo categoriaRepo) {
+    public LugarServicioImpl(LugarRepo lugarRepo, CategoriaRepo categoriaRepo, ResenaRepo resenaRepo, TelefonoRepo telefonoRepo) {
         this.lugarRepo = lugarRepo;
         this.categoriaRepo = categoriaRepo;
-
+        this.resenaRepo = resenaRepo;
+        this.telefonoRepo = telefonoRepo;
     }
 
 
@@ -137,8 +135,13 @@ public class LugarServicioImpl implements LugarServicio {
     }
 
     @Override
-    public List<Lugar> ListaLugares() {
+    public List<Lugar> listarLugares() {
         return lugarRepo.findAll();
+    }
+
+    @Override
+    public List<Categoria> listarCategorias() {
+        return categoriaRepo.findAll();
     }
 
     @Override
@@ -163,6 +166,34 @@ public class LugarServicioImpl implements LugarServicio {
             throw new Exception("El Id no es valido");
         }
         return objeto.get();
+    }
+
+    @Override
+    public List<Resena> listarResenas(Integer idLugar) {
+
+
+        return lugarRepo.listarResenas(idLugar);
+    }
+
+    @Override
+    public List<Horario> listarHorario(Integer idLugar) {
+        return lugarRepo.listarHorarios(idLugar);
+    }
+
+    @Override
+    public Telefono crearTelefono(Telefono telefono) {
+
+        return telefonoRepo.save(telefono);
+    }
+
+    @Override
+    public void crearResena(Resena resena) throws Exception {
+        try {
+            resena.setFechaCreacion(new Date());
+            resenaRepo.save(resena);
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
 

@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyecto.entidades;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,7 +52,6 @@ public class Lugar implements Serializable {
     private RegistroLugar registroLugar;
     //relacion uno a muchos entre lugar y telefono(entidad propietaria)
     @Getter
-    @Setter
     @OneToMany(mappedBy = "lugar")
     private List<Telefono> telefono;
     //relacion uno a uno entre lugar y categoria
@@ -163,11 +163,30 @@ public class Lugar implements Serializable {
         this.longitud = longitud;
     }
 
+    @Builder
+    public Lugar(String descripcion, String nombre, String direccion, double latitud, double longitud, Usuario usuarioCreador,
+                 ArrayList<Imagen> imagenes, Categoria categoria, ArrayList<Horario> horarios, Ciudad ciudad) {
+        this.descripcion = descripcion;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.usuario = usuarioCreador;
+        this.imagen = imagenes;
+        this.categoria = categoria;
+        this.horario = horarios;
+        this.ciudad = ciudad;
+    }
+
     public List<Resena> getResena() {
         return resena;
     }
 
     public void setResena(List<Resena> resena) {
         this.resena = resena;
+    }
+
+    public void setTelefono(Telefono telefono){
+        this.telefono.add(telefono);
     }
 }

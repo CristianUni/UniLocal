@@ -22,7 +22,7 @@ public class ResenaTest {
     private ResenaRepo resenaRepo;
 
     //Metodo para probar El registro de Resenas en la base de datos
-    @Test
+   @Test
     public void registrarResenaTest() {
 
         Resena resenaNuevo = new Resena(1, "Es el mejor lugar al que he ido");

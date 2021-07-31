@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.servicios;
 
-import co.edu.uniquindio.proyecto.entidades.Categoria;
-import co.edu.uniquindio.proyecto.entidades.Lugar;
-import co.edu.uniquindio.proyecto.entidades.RegistroLugar;
-import co.edu.uniquindio.proyecto.entidades.Usuario;
+import co.edu.uniquindio.proyecto.entidades.*;
 
 import java.util.List;
 
@@ -23,7 +20,9 @@ public interface LugarServicio {
 
     Lugar actualizarLugar(Lugar lugar) throws Exception;
 
-    List<Lugar> ListaLugares();
+    List<Lugar> listarLugares();
+
+    List<Categoria> listarCategorias();
 
     Lugar obtenerLugar(Integer id) throws Exception;
 
@@ -31,4 +30,10 @@ public interface LugarServicio {
 
     Categoria obtenerCategoria(Integer id) throws Exception;
 
+    List<Resena> listarResenas(Integer idLugar);
+
+    List<Horario> listarHorario(Integer idLugar);
+    Telefono crearTelefono(Telefono telefono);
+
+    void crearResena(Resena resena) throws  Exception;
 }

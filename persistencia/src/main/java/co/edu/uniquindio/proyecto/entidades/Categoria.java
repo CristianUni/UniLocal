@@ -13,6 +13,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class Categoria implements Serializable {
 
 
@@ -40,6 +41,7 @@ public class Categoria implements Serializable {
 
 
     //relacion uno a uno categoria y lugar(entidad propietaria)
+    @ToString.Exclude
     @Getter
     @Setter
     @OneToMany(mappedBy = "categoria")

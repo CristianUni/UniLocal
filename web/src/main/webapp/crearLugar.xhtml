@@ -15,23 +15,47 @@
     <title>Crear nuevo lugar</title>
 </h:head>
 <h:body>
-    <h:form>
-        <h:panelGrid columns="2" cellpadding="5">
+    <h:form >
+        <h2>Crear Lugar</h2>
+        <h:panelGrid columns="3" cellpadding="5" >
 
             <p:outputLabel for="nombre_lugar" value="Nombre:"/>
             <p:inputText id="nombre_lugar" value="#{lugarBean.lugar.nombre}"/>
+            <p:message for="nombre_lugar"/>
 
             <p:outputLabel for="direccion_lugar" value="Dirección:"/>
             <p:inputText id="direccion_lugar" value="#{lugarBean.lugar.direccion}"/>
+            <p:message for="direccion_lugar"/>
+
+            <p:outputLabel for="telefono_lugar" value="Teléfono:"/>
+            <p:inputText id="telefono_lugar" value="#{lugarBean.telefono.numero}"/>
+            <p:message for="telefono_lugar"/>
+
+            <p:outputLabel for="ciudad_lugar" value="Ciudad:"/>
+            <p:selectOneMenu id="ciudad_lugar" value="#{lugarBean.lugar.ciudad}" converter="#{ciudadConverter}" required="true" requiredMessage="La ciudad es obligatoria">
+                <f:selectItem itemLabel="Seleccione la ciudad" noSelectionOption="true"/>
+                <f:selectItems var="ciudad" itemLabel="#{ciudad.nombre}" value="#{lugarBean.ciudades}"/>
+            </p:selectOneMenu>
+            <p:message for="ciudad_lugar"/>
+
+            <p:outputLabel for="categoria_lugar" value="Categoria:"/>
+            <p:selectOneMenu id="categoria_lugar" value="#{lugarBean.lugar.categoria}" converter="#{categoriaConverter}" required="true" requiredMessage="La ciudad es obligatoria">
+                <f:selectItem itemLabel="Seleccione una categoria" noSelectionOption="true"/>
+                <f:selectItems var="categorias" itemLabel="#{categorias.nombre}" value="#{lugarBean.categorias}"/>
+            </p:selectOneMenu>
+            <p:message for="categoria_lugar"/>
 
             <p:outputLabel for="latitud_lugar" value="Latitud:"/>
             <p:inputText id="latitud_lugar" value="#{lugarBean.lugar.latitud}"/>
+            <p:message for="latitud_lugar"/>
 
             <p:outputLabel for="longitud_lugar" value="Longitud:"/>
             <p:inputText id="longitud_lugar" value="#{lugarBean.lugar.longitud}"/>
+            <p:message for="longitud_lugar"/>
 
             <p:outputLabel for="descripcion_lugar" value="Descripción:"/>
             <p:inputText id="descripcion_lugar" value="#{lugarBean.lugar.descripcion}"/>
+            <p:message for="descripcion_lugar"/>
         </h:panelGrid>
         <p:commandButton action="#{lugarBean.crearLugar}" value="Crear nuevo lugar" update="@form"/>
         <p:growl showDetail="true"/>
