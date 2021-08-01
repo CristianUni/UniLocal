@@ -14,15 +14,16 @@ public class LugarServicioImpl implements LugarServicio {
 
     private final LugarRepo lugarRepo;
     private final CategoriaRepo categoriaRepo;
-    private final ResenaRepo resenaRepo ;
+    private final ResenaRepo resenaRepo;
     private final TelefonoRepo telefonoRepo;
+    private final  ImagenRepo imagenRepo;
 
-
-    public LugarServicioImpl(LugarRepo lugarRepo, CategoriaRepo categoriaRepo, ResenaRepo resenaRepo, TelefonoRepo telefonoRepo) {
+    public LugarServicioImpl(LugarRepo lugarRepo, CategoriaRepo categoriaRepo, ResenaRepo resenaRepo, TelefonoRepo telefonoRepo, ImagenRepo imagenRepo) {
         this.lugarRepo = lugarRepo;
         this.categoriaRepo = categoriaRepo;
         this.resenaRepo = resenaRepo;
         this.telefonoRepo = telefonoRepo;
+        this.imagenRepo = imagenRepo;
     }
 
 
@@ -191,9 +192,14 @@ public class LugarServicioImpl implements LugarServicio {
         try {
             resena.setFechaCreacion(new Date());
             resenaRepo.save(resena);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
+    }
+
+    @Override
+    public Imagen crearImagen(Imagen i) throws Exception {
+        return imagenRepo.save(i);
     }
 
 

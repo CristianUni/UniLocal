@@ -29,7 +29,7 @@ public class Categoria implements Serializable {
 
     @Getter
     @Setter
-    @Size(max=200, message = "El tamaño maximo debe ser de 200 caracteres")
+    @Size(max = 200, message = "El tamaño maximo debe ser de 200 caracteres")
     @Column(name = "descripcion", length = 200)
     private String descripcion;
     @Getter
@@ -47,9 +47,9 @@ public class Categoria implements Serializable {
     @OneToMany(mappedBy = "categoria")
     private List<Lugar> lugar;
 
-    public Categoria (String nombre, String descripcion) {
-        this.nombre=nombre;
-        this.descripcion=descripcion;
+    public Categoria(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
 }

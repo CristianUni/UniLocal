@@ -24,18 +24,19 @@ public class Resena implements Serializable {
     private int codigo;
     @Column(name = "calificacion", nullable = false)
     @Positive
-    @Max(value = 5,message ="La Calificacion debe ser menor o igual a 5")
+    @Max(value = 5, message = "La Calificacion debe ser menor o igual a 5")
     private int calificacion;
     @Column(name = "comentario", length = 500)
-    @Size(max=500,message = "El Comentario debe ser menor a 500 caracteres")
+    @Size(max = 500, message = "El Comentario debe ser menor a 500 caracteres")
     private String comentario;
 
     @ToString.Exclude
     @Column(name = "respuesta", length = 500, nullable = true)
-    @Size(max = 500,message = "La Respuesta deber ser menor a 500 caracteres")
+    @Size(max = 500, message = "La Respuesta deber ser menor a 500 caracteres")
     private String respuesta;
 
-    @Getter @Setter
+    @Getter
+    @Setter
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private Date fechaCreacion;
@@ -62,12 +63,12 @@ public class Resena implements Serializable {
         this.calificacion = calificacion;
         this.comentario = comentario;
         this.lugar = lugar;
-        this.usuario=usuario;
+        this.usuario = usuario;
     }
 
-    public Resena (int calificacion, String comentario){
-        this.calificacion=calificacion;
-        this.comentario=comentario;
+    public Resena(int calificacion, String comentario) {
+        this.calificacion = calificacion;
+        this.comentario = comentario;
     }
 
     //metodos Set y Get de los atributos de Resena

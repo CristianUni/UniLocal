@@ -20,7 +20,7 @@ public class Telefono implements Serializable {
     @Column(name = "numero", unique = true)
     @Positive
     @NotBlank(message = "El campo Numero es obligatorio")
-    @Size(max = 10,message = "El tamaño maximo de Numero es de 10 caracteres")
+    @Size(max = 10, message = "El tamaño maximo de Numero es de 10 caracteres")
     private String numero;
     //Relacion de Telefono con Lugar de muchos a uno
     @Getter

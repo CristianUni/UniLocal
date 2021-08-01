@@ -28,10 +28,12 @@ public class UsuarioBean implements Serializable {
     @Autowired
     private CiudadServicio ciudadServicio;
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private Ciudad ciudad;
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private List<Ciudad> ciudades;
 
     @PostConstruct

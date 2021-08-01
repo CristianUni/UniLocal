@@ -19,33 +19,36 @@ import java.util.List;
 @RequestScope
 public class DetalleLugarBean implements Serializable {
 
-        @Value("#{param['lugar']}")
-        private String idLugar;
+    @Value("#{param['lugar']}")
+    private String idLugar;
 
-        @Autowired
-        private LugarServicio lugarServicio;
+    @Autowired
+    private LugarServicio lugarServicio;
 
-        @Getter @Setter
-        private Lugar lugar;
+    @Getter
+    @Setter
+    private Lugar lugar;
 
-        @Getter @Setter
-        private List<Resena> resenas;
+    @Getter
+    @Setter
+    private List<Resena> resenas;
 
-        @Getter @Setter
-        private List<Horario> horarios;
+    @Getter
+    @Setter
+    private List<Horario> horarios;
 
-        @PostConstruct
-        public void init(){
-                if(idLugar!=null && !"".equals(idLugar)){
-                        try {
-                               int id =Integer.parseInt(idLugar);
-                               this.lugar = lugarServicio.obtenerLugar(id);
-                               this.resenas = lugarServicio.listarResenas(id);
-                               this.horarios =lugarServicio.listarHorario(id);
-                        }catch (Exception e){
-                                e.printStackTrace();
-                        }
-                }
+    @PostConstruct
+    public void init() {
+        if (idLugar != null && !"".equals(idLugar)) {
+            try {
+                int id = Integer.parseInt(idLugar);
+                this.lugar = lugarServicio.obtenerLugar(id);
+                this.resenas = lugarServicio.listarResenas(id);
+                this.horarios = lugarServicio.listarHorario(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+    }
 
 }

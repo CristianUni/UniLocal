@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AdminServiceImpl implements AdminService{
+public class AdminServiceImpl implements AdminService {
 
 
-   private final AdministradorRepo administradorRepo;
+    private final AdministradorRepo administradorRepo;
 
     public AdminServiceImpl(AdministradorRepo administradorRepo) {
         this.administradorRepo = administradorRepo;
@@ -24,11 +24,11 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public boolean existenAdmins() throws Exception {
-        boolean resultado= true;
+        boolean resultado = true;
         List<Administrador> admin = administradorRepo.findAll();
-        if(admin == null || admin.size()==0){
-            resultado=false;
+        if (admin == null || admin.size() == 0) {
+            resultado = false;
         }
-        return resultado ;
+        return resultado;
     }
 }

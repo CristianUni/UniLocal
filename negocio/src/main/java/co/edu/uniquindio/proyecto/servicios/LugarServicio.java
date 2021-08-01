@@ -33,7 +33,10 @@ public interface LugarServicio {
     List<Resena> listarResenas(Integer idLugar);
 
     List<Horario> listarHorario(Integer idLugar);
+
     Telefono crearTelefono(Telefono telefono);
 
-    void crearResena(Resena resena) throws  Exception;
+    void crearResena(Resena resena) throws Exception;
+
+    Imagen crearImagen(Imagen i) throws Exception;
 }

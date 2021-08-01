@@ -20,7 +20,7 @@ public class Ciudad {
     private int codigo;
     //Atributo que sirve para asignar un nombre cuando se crea una Ciudad
     @Column(name = "nombre", length = 60, nullable = false)
-    @NotBlank (message = "El campo Nombre es obligatorio")
+    @NotBlank(message = "El campo Nombre es obligatorio")
     @Size(max = 60, message = "El tamaño máximo es de 60 caracteres")
     private String nombre;
     @Getter

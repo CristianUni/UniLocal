@@ -28,21 +28,21 @@ public class InformacionPorDefecto implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if(!adminService.existenAdmins()) {
+        if (!adminService.existenAdmins()) {
             //Administrador ad1 = Administrador.builder().nombre("Admin 1").email("admin1@admin.com").nickname("admin1").password("123").build();
-            Administrador ad1 =new Administrador("admin1@admin.com","Admin1","admin1","123",0,0);
+            Administrador ad1 = new Administrador("admin1@admin.com", "Admin1", "admin1", "123", 0, 0);
             adminService.registrarAdmin(ad1);
 
             //Administrador ad2 = Administrador.builder().nombre("Admin 2").email("admin2@admin.com").nickname("admin2").password("123").build();
-            Administrador ad2 =new Administrador("admin2@admin.com","Admin2","admin2","123",0,0);
+            Administrador ad2 = new Administrador("admin2@admin.com", "Admin2", "admin2", "123", 0, 0);
             adminService.registrarAdmin(ad2);
         }
 
-        if(ciudadServicio.listarCiudades().isEmpty()) {
-            Ciudad C1= new Ciudad("Armenia");
-            Ciudad C2= new Ciudad("Medellin");
-            Ciudad C3= new Ciudad("Pereira");
-            Ciudad C4= new Ciudad("Cali");
+        if (ciudadServicio.listarCiudades().isEmpty()) {
+            Ciudad C1 = new Ciudad("Armenia");
+            Ciudad C2 = new Ciudad("Medellin");
+            Ciudad C3 = new Ciudad("Pereira");
+            Ciudad C4 = new Ciudad("Cali");
 
             ciudadServicio.registrarCiudad(C1);
             ciudadServicio.registrarCiudad(C2);
@@ -50,11 +50,11 @@ public class InformacionPorDefecto implements CommandLineRunner {
             ciudadServicio.registrarCiudad(C4);
         }
 
-        if(lugarServicio.listarCategorias().isEmpty()) {
-            Categoria ca1 = new Categoria("Restaurante","Lugar para comer");
-            Categoria ca2 = new Categoria("Hotel","Lugar para hospedarser");
-            Categoria ca3 = new Categoria("Café","Lugar para beber café");
-            Categoria ca4 = new Categoria("Bar","Lugar para beber");
+        if (lugarServicio.listarCategorias().isEmpty()) {
+            Categoria ca1 = new Categoria("Restaurante", "Lugar para comer");
+            Categoria ca2 = new Categoria("Hotel", "Lugar para hospedarser");
+            Categoria ca3 = new Categoria("Café", "Lugar para beber café");
+            Categoria ca4 = new Categoria("Bar", "Lugar para beber");
 
             lugarServicio.crearCategoria(ca1);
             lugarServicio.crearCategoria(ca2);

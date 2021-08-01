@@ -21,7 +21,7 @@ public class CiudadConverter implements Converter<Ciudad>, Serializable {
         try {
             if (s != null && !"".equals(s)) {
                 int codigo = Integer.parseInt(s);
-                return  ciudadServicio.obtenerCiudad(codigo);
+                return ciudadServicio.obtenerCiudad(codigo);
 
             }
 

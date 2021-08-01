@@ -17,11 +17,11 @@ public class CategoriaConverter implements Converter<Categoria>, Serializable {
     private LugarServicio lugarServicio;
 
     @Override
-    public Categoria getAsObject(FacesContext facesContext, UIComponent uiComponent, String s){
+    public Categoria getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
         try {
             if (s != null && !"".equals(s)) {
                 int codigo = Integer.parseInt(s);
-                return  lugarServicio.obtenerCategoria(codigo);
+                return lugarServicio.obtenerCategoria(codigo);
             }
 
         } catch (Exception e) {
@@ -31,9 +31,9 @@ public class CategoriaConverter implements Converter<Categoria>, Serializable {
     }
 
     @Override
-    public String getAsString(FacesContext  facesContext, UIComponent uiComponent, Categoria categoria){
-        if(categoria!=null){
-            return ""+categoria.getCodigo();
+    public String getAsString(FacesContext facesContext, UIComponent uiComponent, Categoria categoria) {
+        if (categoria != null) {
+            return "" + categoria.getCodigo();
         }
         return "";
     }

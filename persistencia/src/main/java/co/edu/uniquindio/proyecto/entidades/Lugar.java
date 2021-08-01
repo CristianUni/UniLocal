@@ -31,12 +31,12 @@ public class Lugar implements Serializable {
     @Size(max = 100)
     private String direccion;
     @Column(name = "latitud", precision = 3, scale = 6, nullable = false)
-    @DecimalMax(value = "90",message = "El rango maximo de la Latitud es hasta 90.0")
-    @DecimalMin(value = "-90",message = "El rango minimo de la Latitud es hasta -90.0")
+    @DecimalMax(value = "90", message = "El rango maximo de la Latitud es hasta 90.0")
+    @DecimalMin(value = "-90", message = "El rango minimo de la Latitud es hasta -90.0")
     private double latitud;
     @Column(name = "longitud", precision = 2, scale = 6, nullable = false)
-    @DecimalMax(value = "180",message = "El rango maximo de la Longitud es hasta -180.0")
-    @DecimalMin(value ="-180",message = "El rango minimo de la Longitud es hasta -180.0")
+    @DecimalMax(value = "180", message = "El rango maximo de la Longitud es hasta -180.0")
+    @DecimalMin(value = "-180", message = "El rango minimo de la Longitud es hasta -180.0")
     private double longitud;
 
     //relaciones entre entidades
@@ -178,6 +178,13 @@ public class Lugar implements Serializable {
         this.ciudad = ciudad;
     }
 
+    public Imagen getImagenPrincipal(){
+        if(!imagen.isEmpty()){
+            return imagen.get(0);
+        }
+        return new Imagen("default.jpg");
+    }
+
     public List<Resena> getResena() {
         return resena;
     }
@@ -186,7 +193,7 @@ public class Lugar implements Serializable {
         this.resena = resena;
     }
 
-    public void setTelefono(Telefono telefono){
+    public void setTelefono(Telefono telefono) {
         this.telefono.add(telefono);
     }
 }

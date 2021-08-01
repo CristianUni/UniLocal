@@ -5,14 +5,21 @@ import co.edu.uniquindio.proyecto.repositorios.TelefonoRepo;
 import co.edu.uniquindio.proyecto.servicios.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.RequestScope;
+
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +36,16 @@ public class LugarBean implements Serializable {
     private final CategoriaServicio categoriaServicio;
     private final UsuarioServicio usuarioServicio;
 
-    @Getter @Setter
+    @Value("${upload.url}")
+    private String urlImagenes;
+    private ArrayList<Imagen> imagenes;
+
+    @Getter
+    @Setter
     private List<Ciudad> ciudades;
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private List<Categoria> categorias;
 
 
@@ -46,32 +59,60 @@ public class LugarBean implements Serializable {
     @PostConstruct
     public void inicializar() {
         this.lugar = new Lugar();
-        this.telefono= new Telefono();
+        this.telefono = new Telefono();
         this.ciudades = ciudadServicio.listarCiudades();
         this.categorias = lugarServicio.listarCategorias();
+        this.imagenes = new ArrayList<>();
     }
 
     public String crearLugar() {
         try {
-            //lugar.setCategoria(categoriaServicio.obtenerCategoria(1));
-            //lugar.setCiudad(ciudadServicio.obtenerCiudad(1));
-            if(lugar.getLatitud()!=null && lugar.getLongitud()!=null && lugar.getLatitud()!=0 && lugar.getLongitud()!=0) {
+            if (lugar.getLatitud() != null && lugar.getLongitud() != null && lugar.getLatitud() != 0 && lugar.getLongitud() != 0) {
                 lugar.setUsuario(usuarioServicio.buscarUsuario("eljhoiner@gmail.com"));
-                System.out.println(telefono.getNumero());
+                lugar.setImagen(imagenes);
+
 
 
                 Lugar l = lugarServicio.crearLugar(lugar);
                 telefono.setLugar(l);
                 lugarServicio.crearTelefono(telefono);
-                return "lugarCreado?faces-redirect=true";
-            }else{
+
+
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "El lugar ha sido creado");
+                FacesContext.getCurrentInstance().addMessage("mensaje_bean", msg);
+
+            } else {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", " Es necesario ubicar el lugar dentro del mapa");
-                FacesContext.getCurrentInstance().addMessage("lugarg", msg);
+                FacesContext.getCurrentInstance().addMessage("mensaje_bean", msg);
 
             }
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+        return null;
+    }
+
+    public void subirImagenes(FileUploadEvent event) {
+        UploadedFile imagen = event.getFile();
+        String nombreImagen = subirImagen(imagen);
+        if (nombreImagen != null) {
+            imagenes.add(new Imagen(nombreImagen));
+        }
+    }
+
+    public String subirImagen(UploadedFile file) {
+        try {
+            InputStream input = file.getInputStream();
+            String filename = FilenameUtils.getName(file.getFileName());
+            String basename = FilenameUtils.getBaseName(filename) + "_";
+            String extension = "." + FilenameUtils.getExtension(filename);
+            File fileDest = File.createTempFile(basename, extension, new File(urlImagenes));
+            FileOutputStream output = new FileOutputStream(fileDest);
+            IOUtils.copy(input, output);
+            return fileDest.getName();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
