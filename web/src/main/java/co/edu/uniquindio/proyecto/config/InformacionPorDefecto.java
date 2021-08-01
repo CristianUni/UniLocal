@@ -87,7 +87,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
             lugarServicio.crearLugar(l2);
         }
 
-        Resena r1 = Resena.builder()
+        /*Resena r1 = Resena.builder()
                 .comentario("Está más o menos")
                 .calificacion(3)
                 .usuario(usuarioServicio.buscarUsuario("eljhoiner@gmail.com"))
@@ -101,7 +101,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
                 .usuario(usuarioServicio.buscarUsuario("julio@gmail.com"))
                 .lugar(lugarServicio.obtenerLugar(2)).build();
 
-        lugarServicio.crearResena(r2);
+        lugarServicio.crearResena(r2);*/
 
     }
 

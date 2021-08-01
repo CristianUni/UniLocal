@@ -12,12 +12,13 @@ import org.springframework.web.context.annotation.RequestScope;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@RequestScope
+@ViewScoped
 public class LugarBean implements Serializable {
 
     private Lugar lugar;
@@ -54,16 +55,22 @@ public class LugarBean implements Serializable {
         try {
             //lugar.setCategoria(categoriaServicio.obtenerCategoria(1));
             //lugar.setCiudad(ciudadServicio.obtenerCiudad(1));
-            lugar.setUsuario(usuarioServicio.buscarUsuario("eljhoiner@gmail.com"));
-            System.out.println(telefono.getNumero());
+            if(lugar.getLatitud()!=null && lugar.getLongitud()!=null && lugar.getLatitud()!=0 && lugar.getLongitud()!=0) {
+                lugar.setUsuario(usuarioServicio.buscarUsuario("eljhoiner@gmail.com"));
+                System.out.println(telefono.getNumero());
 
 
-           Lugar l = lugarServicio.crearLugar(lugar);
-            telefono.setLugar(l);
-            lugarServicio.crearTelefono(telefono);
-            return "lugarCreado?faces-redirect=true";
+                Lugar l = lugarServicio.crearLugar(lugar);
+                telefono.setLugar(l);
+                lugarServicio.crearTelefono(telefono);
+                return "lugarCreado?faces-redirect=true";
+            }else{
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", " Es necesario ubicar el lugar dentro del mapa");
+                FacesContext.getCurrentInstance().addMessage("lugarg", msg);
+
+            }
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage() + " mori");
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
         return null;
