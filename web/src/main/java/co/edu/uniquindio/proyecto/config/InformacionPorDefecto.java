@@ -51,7 +51,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
         }
 
         if (lugarServicio.listarCategorias().isEmpty()) {
-            Categoria ca1 = new Categoria("Restaurante", "Lugar para comer");
+            /*Categoria ca1 = new Categoria("Restaurante", "Lugar para comer");
             Categoria ca2 = new Categoria("Hotel", "Lugar para hospedarser");
             Categoria ca3 = new Categoria("Café", "Lugar para beber café");
             Categoria ca4 = new Categoria("Bar", "Lugar para beber");
@@ -59,28 +59,29 @@ public class InformacionPorDefecto implements CommandLineRunner {
             lugarServicio.crearCategoria(ca1);
             lugarServicio.crearCategoria(ca2);
             lugarServicio.crearCategoria(ca3);
-            lugarServicio.crearCategoria(ca4);
-
+            lugarServicio.crearCategoria(ca4);*/
+            Usuario u1 = new Usuario("mario@gmail.com","mario ortiz", "ETsh", "12345", 5, 56);
+            usuarioServicio.registrarUsuario(u1);
             Lugar l1 = Lugar.builder().nombre("Coffe break")
-                    .ciudad(ciudadServicio.obtenerCiudad(3))
+                    .ciudad(ciudadServicio.obtenerCiudad(1))
                     .descripcion("Café, café y más café")
                     .direccion("Calle 5 con 5")
                     .latitud(67)
                     .longitud(34)
-                    .usuarioCreador(usuarioServicio.buscarUsuario("eljhoiner@gmail.com"))
+                    .usuarioCreador(usuarioServicio.buscarUsuario("mario@gmail.com"))
                     .imagenes(new ArrayList<>())
-                    .categoria(lugarServicio.obtenerCategoria(3))
+                    .categoria(lugarServicio.obtenerCategoria(1))
                     .horarios(new ArrayList<>()).build();
 
             Lugar l2 = Lugar.builder().nombre("hotel el tiempo")
-                    .ciudad(ciudadServicio.obtenerCiudad(3))
+                    .ciudad(ciudadServicio.obtenerCiudad(1))
                     .descripcion("hotel sin techo")
                     .direccion("Calle ojo me roban")
                     .latitud(78)
                     .longitud(34)
-                    .usuarioCreador(usuarioServicio.buscarUsuario("eljhoiner@gmail.com"))
+                    .usuarioCreador(usuarioServicio.buscarUsuario("mario@gmail.com"))
                     .imagenes(new ArrayList<>())
-                    .categoria(lugarServicio.obtenerCategoria(2))
+                    .categoria(lugarServicio.obtenerCategoria(1))
                     .horarios(new ArrayList<>()).build();
 
             lugarServicio.crearLugar(l1);
@@ -90,15 +91,15 @@ public class InformacionPorDefecto implements CommandLineRunner {
         /*Resena r1 = Resena.builder()
                 .comentario("Está más o menos")
                 .calificacion(3)
-                .usuario(usuarioServicio.buscarUsuario("eljhoiner@gmail.com"))
-                .lugar(lugarServicio.obtenerLugar(3)).build();
+                .usuario(usuarioServicio.buscarUsuario("mario@gmail.com"))
+                .lugar(lugarServicio.obtenerLugar(1)).build();
 
         lugarServicio.crearResena(r1);
 
         Resena r2 = Resena.builder()
                 .comentario("Está lo maximo (no soy bot)")
                 .calificacion(3)
-                .usuario(usuarioServicio.buscarUsuario("julio@gmail.com"))
+                .usuario(usuarioServicio.buscarUsuario("mario@gmail.com"))
                 .lugar(lugarServicio.obtenerLugar(2)).build();
 
         lugarServicio.crearResena(r2);*/

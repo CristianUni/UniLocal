@@ -68,7 +68,7 @@ public class LugarBean implements Serializable {
     public String crearLugar() {
         try {
             if (lugar.getLatitud() != null && lugar.getLongitud() != null && lugar.getLatitud() != 0 && lugar.getLongitud() != 0) {
-                lugar.setUsuario(usuarioServicio.buscarUsuario("eljhoiner@gmail.com"));
+                lugar.setUsuario(usuarioServicio.buscarUsuario("eljorge@gmail.com"));
                 lugar.setImagen(imagenes);
 
 
@@ -76,6 +76,12 @@ public class LugarBean implements Serializable {
                 Lugar l = lugarServicio.crearLugar(lugar);
                 telefono.setLugar(l);
                 lugarServicio.crearTelefono(telefono);
+                for(int i=0;i<imagenes.size();i++){
+
+                    imagenes.get(i).setLugar(l);
+                    lugarServicio.crearImagen(imagenes.get(i));
+
+                }
 
 
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "El lugar ha sido creado");

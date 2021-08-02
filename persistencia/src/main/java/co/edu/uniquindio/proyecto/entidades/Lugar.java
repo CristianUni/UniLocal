@@ -178,11 +178,11 @@ public class Lugar implements Serializable {
         this.ciudad = ciudad;
     }
 
-    public Imagen getImagenPrincipal(){
-        if(!imagen.isEmpty()){
-            return imagen.get(0);
+    public String getImagenPrincipal(){
+        if(imagen!=null&&!imagen.isEmpty()){
+            return imagen.get(0).getLink();
         }
-        return new Imagen("default.jpg");
+        return "default.jpg";
     }
 
     public List<Resena> getResena() {
