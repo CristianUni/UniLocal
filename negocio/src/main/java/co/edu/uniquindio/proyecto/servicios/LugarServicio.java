@@ -8,9 +8,9 @@ public interface LugarServicio {
 
     List<Lugar> buscarPorNombre(String nombre) throws Exception;
 
-    List<Lugar> buscarPorCategoria(int categoria) throws Exception;
+    List<Lugar> buscarPorCategoria(String categoria) throws Exception;
 
-    List<Lugar> buscarPorCategoriaYNombre(String nombre, int categoria) throws Exception;
+    List<Lugar> buscarPorCategoriaYNombre(String nombre) throws Exception;
 
     Lugar buscarPorNombreExacto(String nombre) throws Exception;
 

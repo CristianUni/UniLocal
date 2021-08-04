@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.bean;
 
 import co.edu.uniquindio.proyecto.dto.MarketDTO;
+import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.Lugar;
 import co.edu.uniquindio.proyecto.servicios.LugarServicio;
 import com.google.gson.Gson;
@@ -36,15 +37,26 @@ public class BusquedaBean implements Serializable {
     @PostConstruct
     public void inicializar() throws Exception {
         if (busquedaParam != null && !busquedaParam.isEmpty()) {
+
+
             lugares = lugarServicio.buscarPorNombre(busquedaParam);
+
             PrimeFaces.current().executeScript("crearMapa(" + new Gson().toJson(this.lugares.stream().map(l -> new MarketDTO(l.getId(), l.getNombre(), l.getDescripcion(), l.getLatitud(), l.getLongitud())).collect(Collectors.toList())) + ");");
+
         }
     }
 
     public String buscar() {
+
+         /*if(existe==false)
+         {
+             return "/";
+         }*/
         if (!busqueda.isEmpty()) {
+            System.out.println("entroo");
             return "resultadoBusqueda?faces-redirect=true&amp;busqueda=" + busqueda;
         }
+
         return "";
     }
 

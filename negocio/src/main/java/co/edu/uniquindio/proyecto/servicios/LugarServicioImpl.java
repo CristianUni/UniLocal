@@ -39,7 +39,7 @@ public class LugarServicioImpl implements LugarServicio {
     }
 
     @Override
-    public List<Lugar> buscarPorCategoria(int nombre) throws Exception {
+    public List<Lugar> buscarPorCategoria(String nombre) throws Exception {
         List<Lugar> buscado = lugarRepo.buscarPorCateoria(nombre);
         if (buscado == null || buscado.size() == 0) {
             throw new Exception("No se encuentra ningun lugar con esa categoria");
@@ -49,10 +49,14 @@ public class LugarServicioImpl implements LugarServicio {
 
 
     @Override
-    public List<Lugar> buscarPorCategoriaYNombre(String nombre, int categoriaId) throws Exception {
-        List<Lugar> buscado = lugarRepo.buscarPorCateoriaYNombre(nombre, categoriaId);
+    public List<Lugar> buscarPorCategoriaYNombre(String nombre) throws Exception {
+        List<Lugar> buscado = lugarRepo.buscarPorCateoria(nombre);
+        List<Lugar> buscadoNombre1 = lugarRepo.buscarPorCateoria(nombre);
+
+        buscado.addAll(buscadoNombre1);
+
         if (buscado == null || buscado.size() == 0) {
-            List<Lugar> buscadoCategoria = lugarRepo.buscarPorCateoria(categoriaId);
+            List<Lugar> buscadoCategoria = lugarRepo.buscarPorCateoria(nombre);
             List<Lugar> buscadoNombre = lugarRepo.buscarPorCampo(nombre);
 
             if ((buscadoCategoria == null || buscadoCategoria.size() == 0) && (buscadoNombre == null || buscadoNombre.size() == 0)) {

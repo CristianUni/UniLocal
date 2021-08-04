@@ -1,7 +1,6 @@
 package co.edu.uniquindio.proyecto.bean;
 
 import co.edu.uniquindio.proyecto.entidades.*;
-import co.edu.uniquindio.proyecto.repositorios.TelefonoRepo;
 import co.edu.uniquindio.proyecto.servicios.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +34,7 @@ public class LugarBean implements Serializable {
     private final CiudadServicio ciudadServicio;
     private final CategoriaServicio categoriaServicio;
     private final UsuarioServicio usuarioServicio;
+    private final RegistroLugarServicio registroLugarServicio;
 
     @Value("${upload.url}")
     private String urlImagenes;
@@ -51,12 +51,15 @@ public class LugarBean implements Serializable {
     @Value(value = "#{seguridadBean.persona}")
     private Persona personaLogin;
 
+    @Getter @Setter
+    private RegistroLugar registroLugar;
 
-    public LugarBean(LugarServicio lugarServicio, CiudadServicio ciudadServicio, UsuarioServicio usuarioServicio, CategoriaServicio categoriaServicio, TelefonoServicio telefonoServicio) {
+    public LugarBean(LugarServicio lugarServicio, CiudadServicio ciudadServicio, UsuarioServicio usuarioServicio, CategoriaServicio categoriaServicio, TelefonoServicio telefonoServicio, RegistroLugarServicio registroLugarServicio) {
         this.lugarServicio = lugarServicio;
         this.ciudadServicio = ciudadServicio;
         this.usuarioServicio = usuarioServicio;
         this.categoriaServicio = categoriaServicio;
+        this.registroLugarServicio = registroLugarServicio;
     }
 
     @PostConstruct
@@ -66,6 +69,8 @@ public class LugarBean implements Serializable {
         this.ciudades = ciudadServicio.listarCiudades();
         this.categorias = lugarServicio.listarCategorias();
         this.imagenes = new ArrayList<>();
+        this.registroLugar= new RegistroLugar();
+
     }
 
     public String crearLugar() {
@@ -77,6 +82,14 @@ public class LugarBean implements Serializable {
 
 
                     Lugar l = lugarServicio.crearLugar(lugar);
+                    registroLugar.setLugar(l);
+
+                    RegistroLugar r =registroLugarServicio.RegistroLugar(registroLugar);
+
+                    System.out.println(registroLugar.getCodigo());
+
+                    registroLugarServicio.CrearRegistroLugar(r);
+
                     telefono.setLugar(l);
                     lugarServicio.crearTelefono(telefono);
                     for (int i = 0; i < imagenes.size(); i++) {

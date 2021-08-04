@@ -19,12 +19,12 @@ public interface LugarRepo extends JpaRepository<Lugar, Integer> {
     @Query("select l from Lugar l where l.nombre like %:nombre%")
     List<Lugar> buscarPorCampo(@Param("nombre") String nombre);
 
-    @Query("select l from Lugar l where l.categoria.codigo=:nombre ")
-    List<Lugar> buscarPorCateoria(@Param("nombre") int nombre);
+    @Query("select l from Lugar l where l.categoria.nombre=:nombre ")
+    List<Lugar> buscarPorCateoria(@Param("nombre") String nombre);
 
 
-    @Query("select l from Lugar l where l.categoria.codigo=:categoriaId and l.nombre like %:nombre% ")
-    List<Lugar> buscarPorCateoriaYNombre(@Param("nombre") String nombre, @Param("categoriaId") int categoriaId);
+   // @Query("select l from Lugar l where l.categoria.codigo=:categoriaId and l.nombre like %:nombre% ")
+   // List<Lugar> buscarPorCateoriaYNombre(@Param("nombre") String nombre, @Param("categoriaId") int categoriaId);
 
     @Query("select r from Resena r where r.lugar.id=:idLugar")
     List<Resena> listarResenas(Integer idLugar);

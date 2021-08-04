@@ -41,7 +41,7 @@ public class LugarServcioTest {
     @Sql("classpath:lugares.sql")
     public void listarLugaresPorCatagoriaTest() throws Exception {
 
-        List<Lugar> lista = lugarServicio.buscarPorCategoria(2);
+        List<Lugar> lista = lugarServicio.buscarPorCategoria("Hotel");
 
         for (Lugar l : lista) {
             System.out.println(l.getNombre());
@@ -51,11 +51,12 @@ public class LugarServcioTest {
 
     }
 
+
     @Test
     @Sql("classpath:lugares.sql")
     public void buscarPorCategoriaYNombreaTest() throws Exception {
 
-        List<Lugar> lista = lugarServicio.buscarPorCategoriaYNombre("maria", 2);
+        List<Lugar> lista = lugarServicio.buscarPorCategoriaYNombre("maria");
 
         for (Lugar l : lista) {
             System.out.println(l.getNombre());

@@ -19,8 +19,8 @@ public class RegistroLugarServicioImpl implements RegistroLugarServicio {
         this.registroLugarRepo = registroLugarRepo;
     }
 
-    public RegistroLugar AutorizarLugares(RegistroLugar r, boolean estado) {
-        if (estado) {
+    public RegistroLugar AutorizarLugares(RegistroLugar r, int estado) {
+        if (estado ==2) {
             r.setEstado(Estado.APROBADO);
             Date ahora = new Date();
             r.setFechaAprobacion(ahora);
@@ -30,7 +30,7 @@ public class RegistroLugarServicioImpl implements RegistroLugarServicio {
             var10000.println(var10001 + " fechisimo" + r.getFechaAprobacion());
         }
 
-        if (!estado) {
+        if (estado==1) {
             r.setEstado(Estado.RECHAZADO);
         }
 
@@ -38,8 +38,27 @@ public class RegistroLugarServicioImpl implements RegistroLugarServicio {
     }
 
     @Override
+    public RegistroLugar RegistroLugar(RegistroLugar r) throws Exception {
+        //Date ahora = new Date();
+
+      // r.setFechaCreacion(ahora);
+        r.setEstado(Estado.EN_ESPERA);
+
+        PrintStream var10000 = System.out;
+        LocalDate var10001 = LocalDate.now();
+        var10000.println(var10001 + " fechisimo" + r.getFechaCreacion());
+
+        return registroLugarRepo.save(r);
+    }
+
+
+    @Override
     public RegistroLugar CrearRegistroLugar(RegistroLugar registroLugar) throws Exception {
 
+        System.out.println("estes el lugar del registro lugar"+registroLugar.getLugar());
+        System.out.println("estes el lugar del registro codigo"+registroLugar.getCodigo());
+        System.out.println("estes el lugar del registro estado"+registroLugar.getEstado());
+        System.out.println("estes el lugar del registro fecha"+registroLugar.getFechaCreacion());
 
         return registroLugarRepo.save(registroLugar);
     }

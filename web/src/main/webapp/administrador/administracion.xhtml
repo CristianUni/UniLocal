@@ -9,31 +9,21 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xml:lang="en" lang="en">
 <ui:composition template="/WEB-INF/plantilla.xhtml">
-    <ui:define name="title">Unilocal | Registrar Moderador</ui:define>
+    <ui:define name="title">Unilocal | Administracion</ui:define>
     <ui:define name="content">
         <div class="container mt-4 mb-4">
-            <p:panel header="Registrar Moderador">
+            <p:panel header="Administracion">
                 <h:form>
                     <h:panelGrid columns="3" cellpadding="5">
-                        <p:outputLabel for="nombre_moderador" value="Nombre:"/>
-                        <p:inputText id="nombre_moderador" value="#{moderadorBean.moderador.nombre}" required="true"/>
-                        <p:message for="nombre_moderador"/>
 
-                        <p:outputLabel for="nickname_moderador" value="Nickname:"/>
-                        <p:inputText id="nickname_moderador" value="#{moderadorBean.moderador.nickname}" required="true"/>
-                        <p:message for="nickname_moderador"/>
 
                         <p:outputLabel for="email_moderador" value="Email:"/>
                         <p:inputText id="email_moderador" value="#{moderadorBean.moderador.email}" required="true"/>
                         <p:message for="email_moderador"/>
 
-                        <p:outputLabel for="contrasena_moderador" value="Contraseña:"/>
-                        <p:password id="contrasena_moderador" value="#{moderadorBean.moderador.contrasena}" required="true"/>
-                        <p:message for="contrasena_moderador"/>
-
 
                     </h:panelGrid>
-                    <p:commandButton styleClass="mt-4" action="#{moderadorBean.registrarModerador}" value="Registrar"
+                    <p:commandButton styleClass="mt-4" action="#{moderadorBean.eliminarModerador}" value="Eliminar"
                                      update="@form"/>
                     <p:growl for="mensajep" showDetail="true"/>
                 </h:form>

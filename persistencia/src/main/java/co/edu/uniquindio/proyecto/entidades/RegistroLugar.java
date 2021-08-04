@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,24 +8,16 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
-
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class RegistroLugar implements Serializable {
 
     //Llave principal de la entidad que en este caso es un código autogenerado de tipo entero
     @Id
+    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
-
     private int codigo;
-
-    public Lugar getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(Lugar lugar) {
-        this.lugar = lugar;
-    }
 
     /*
         Atributo de la entidad que es de tipo enum. Este atributo nos indica el estado de el lugar,
@@ -47,8 +40,7 @@ public class RegistroLugar implements Serializable {
     Atributo de la entidad que es de tipo date. Este atributo nos indica la fecha de aprobación de la solicitud del registro del lugar
     El atributo no puede ser null
      */
-    @NotBlank(message = "Fecha de aprobacion es obligatoria")
-    @Column(name = "fecha_aprobacion", nullable = false)
+    @Column(name = "fecha_aprobacion", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAprobacion;
 
@@ -112,20 +104,7 @@ public class RegistroLugar implements Serializable {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        RegistroLugar that = (RegistroLugar) o;
-
-        return codigo == that.codigo;
-    }
-
-    @Override
-    public int hashCode() {
-        return codigo;
-    }
 
 
     /*

@@ -30,7 +30,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 
-         /*if (!adminService.existenAdmins()) {
+         if (!adminService.existenAdmins()) {
              //Administrador ad1 = Administrador.builder().nombre("Admin 1").email("admin1@admin.com").nickname("admin1").password("123").build();
              Administrador ad1 = new Administrador("admin1@admin.com", "Admin1", "admin1", "123", 0, 0);
              adminService.registrarAdmin(ad1);
@@ -38,7 +38,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
              //Administrador ad2 = Administrador.builder().nombre("Admin 2").email("admin2@admin.com").nickname("admin2").password("123").build();
              Administrador ad2 = new Administrador("admin2@admin.com", "Admin2", "admin2", "123", 0, 0);
              adminService.registrarAdmin(ad2);
-         }*/
+         }
 
          if (ciudadServicio.listarCiudades().isEmpty()) {
              Ciudad C1 = new Ciudad("Armenia");
@@ -64,8 +64,7 @@ public class InformacionPorDefecto implements CommandLineRunner {
              lugarServicio.crearCategoria(ca4);
 
          }
-         /*Usuario u1 = new Usuario("mario@gmail.com", "mario ortiz", "ETsh", "12345", 5, 56);
-         usuarioServicio.registrarUsuario(u1);
+        /* usuarioServicio.registrarUsuario(u1);
          Lugar l1 = Lugar.builder().nombre("Coffe break")
                  .ciudad(ciudadServicio.obtenerCiudad(1))
                  .descripcion("Café, café y más café")
@@ -105,8 +104,8 @@ public class InformacionPorDefecto implements CommandLineRunner {
                 .usuario(usuarioServicio.buscarUsuario("mario@gmail.com"))
                 .lugar(lugarServicio.obtenerLugar(2)).build();
 
-        lugarServicio.crearResena(r2);*/
-
+        lugarServicio.crearResena(r2);
+*/
      }
 
 }

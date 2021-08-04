@@ -33,7 +33,7 @@ public class RegistroLugarServicioTest {
         Date fechai = new GregorianCalendar(2020, 03, 1).getTime();/*LocalDate.of(2020, 3, 1)*/
         ;
         RegistroLugar RegistroLugarNuevo1 = new RegistroLugar(Estado.EN_ESPERA, fechai);
-        RegistroLugar RegistroLugarGuardado = this.registroLugarServicio.AutorizarLugares(RegistroLugarNuevo1, true);
+        RegistroLugar RegistroLugarGuardado = this.registroLugarServicio.AutorizarLugares(RegistroLugarNuevo1, 1);
         System.out.println(RegistroLugarGuardado.getEstado());
         System.out.println(RegistroLugarGuardado.getFechaAprobacion());
         System.out.println(RegistroLugarGuardado.getFechaCreacion());
