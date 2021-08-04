@@ -45,7 +45,7 @@
                             <p:dataViewGridItem>
                                 <div class="card" style="width: 18rem;">
                                     <p>Aqui deberia tener una imagen</p>
-                                    <img src="/uploads/#{lugar.imagenPrincipal}" class="card-img-top"   alt="..."/>
+                                    <img src="/uploads/#{lugar.imagenPrincipal}" class="card-img-top" alt="..."/>
                                     <div class="card-body">
                                         <h5 class="card-title">#{lugar.nombre}</h5>
                                         <p class="card-text">#{lugar.descripcion}</p>
@@ -58,7 +58,8 @@
 
                             <p:dataViewListItem>
                                 <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
-                                    <p:graphicImage url="/uploads/#{lugar.imagenPrincipal}" style="width:20%" styleClass="imagen-lugar"/>
+                                    <p:graphicImage url="/uploads/#{lugar.imagenPrincipal}" style="width:20%"
+                                                    styleClass="imagen-lugar"/>
                                     <p:outputPanel>
                                         <h:panelGrid columns="2" cellpadding="5">
                                             <h:outputText value="Nombre:"/>

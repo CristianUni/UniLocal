@@ -8,11 +8,12 @@ import java.io.Serializable;
 // usando la estrategia de tablas por clase la cual mapeará todos los atributos
 // y metodos a los hijos
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@MappedSuperclass
+@Entity
 public class Persona implements Serializable {
 
     @Id
     @Column(name = "email", length = 200)
+
     @Size(max = 200, message = "El tamaño maximo es de 200 caracteres")
     @NotBlank(message = "El Email es obligatorio")
     @Email(message = "El correo es invalido")

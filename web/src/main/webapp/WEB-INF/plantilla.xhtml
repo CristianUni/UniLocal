@@ -7,8 +7,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xml:lang="en" lang="en">
-
+      xml:lang="en" lang="en"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -34,11 +34,17 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" jsf:rendered="#{!seguridadBean.autenticado}">
                                 <a class="nav-link" href="/registrarUsuario.xhtml">Registrarse</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/crearLugar.xhtml">Crear Lugar</a>
+                            <li class="nav-item" jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol == 'usuario'}">
+                                <a class="nav-link" href="/usuario/crearLugar.xhtml">Crear Lugar</a>
+                            </li>
+                            <li class="nav-item" jsf:rendered="#{seguridadBean.autenticado}">
+                                <a class="nav-link" href="/usuario/perfil.xhtml">Perfil</a>
+                            </li>
+                            <li class="nav-item" jsf:rendered="#{seguridadBean.autenticado and seguridadBean.rol == 'admin'}">
+                                <a class="nav-link" href="/administrador/crearModerador.xhtml">Crear Moderador</a>
                             </li>
                         </ul>
                         <div class="d-flex">
@@ -49,12 +55,29 @@
                                 <p:commandButton styleClass="btn btn-outline-light btn-buscar" value="Buscar"
                                                  action="#{busquedaBean.buscar}"/>
                             </h:form>
-                            <p:commandButton styleClass="ui-button-raised ui-button-warning" value="Login"
-                                             action="#{busquedaBean.buscar}"/>
+                            <p:commandButton styleClass="ui-button-raised ui-button-warning" value="Iniciar" icon="pi pi-user" iconPos="left"  onclick="PF('login').show()"  rendered="#{!seguridadBean.autenticado}"/>
+                            <p:commandButton styleClass="ui-button-raised ui-button-warning" value="Salir" icon="pi pi-sign-out" iconPos="left" action="#{seguridadBean.cerrarSesion}" rendered="#{seguridadBean.autenticado}"/>
                         </div>
                     </div>
                 </div>
             </nav>
+            <p:dialog header="Iniciar Sesion" showEffect="fade" widgetVar="login" modal="true"  rendered="#{!seguridadBean.autenticado}">
+                <h:form >
+                    <h:panelGrid columns="3" cellpadding="5">
+                        <p:outputLabel for="email_login" value="Email:" />
+                        <p:inputText id="email_login" value="#{seguridadBean.email}" required="true" />
+                        <p:message for="email_login" />
+                        <p:outputLabel for="contrasena_login" value="Contraseña:" />
+                        <p:password id="contrasena_login" value="#{seguridadBean.contrasena}" required="true" />
+                        <p:message for="contrasena_login"  />
+                    </h:panelGrid>
+                    <p:commandButton value="Iniciar Sesión"  action="#{seguridadBean.iniciarSesion}" update="@form" icon="pi pi-sign-in" iconPos="left"/>
+
+                    <p:growl for="login-bean" showDetail="true" />
+                </h:form>
+            </p:dialog>
+
+
         </ui:insert>
     </div>
     <div id="content">

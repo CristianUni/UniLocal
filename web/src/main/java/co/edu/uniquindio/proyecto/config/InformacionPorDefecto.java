@@ -26,69 +26,72 @@ public class InformacionPorDefecto implements CommandLineRunner {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @Override
+     @Override
     public void run(String... args) throws Exception {
-        if (!adminService.existenAdmins()) {
-            //Administrador ad1 = Administrador.builder().nombre("Admin 1").email("admin1@admin.com").nickname("admin1").password("123").build();
-            Administrador ad1 = new Administrador("admin1@admin.com", "Admin1", "admin1", "123", 0, 0);
-            adminService.registrarAdmin(ad1);
 
-            //Administrador ad2 = Administrador.builder().nombre("Admin 2").email("admin2@admin.com").nickname("admin2").password("123").build();
-            Administrador ad2 = new Administrador("admin2@admin.com", "Admin2", "admin2", "123", 0, 0);
-            adminService.registrarAdmin(ad2);
-        }
 
-        if (ciudadServicio.listarCiudades().isEmpty()) {
-            Ciudad C1 = new Ciudad("Armenia");
-            Ciudad C2 = new Ciudad("Medellin");
-            Ciudad C3 = new Ciudad("Pereira");
-            Ciudad C4 = new Ciudad("Cali");
+         /*if (!adminService.existenAdmins()) {
+             //Administrador ad1 = Administrador.builder().nombre("Admin 1").email("admin1@admin.com").nickname("admin1").password("123").build();
+             Administrador ad1 = new Administrador("admin1@admin.com", "Admin1", "admin1", "123", 0, 0);
+             adminService.registrarAdmin(ad1);
 
-            ciudadServicio.registrarCiudad(C1);
-            ciudadServicio.registrarCiudad(C2);
-            ciudadServicio.registrarCiudad(C3);
-            ciudadServicio.registrarCiudad(C4);
-        }
+             //Administrador ad2 = Administrador.builder().nombre("Admin 2").email("admin2@admin.com").nickname("admin2").password("123").build();
+             Administrador ad2 = new Administrador("admin2@admin.com", "Admin2", "admin2", "123", 0, 0);
+             adminService.registrarAdmin(ad2);
+         }*/
 
-        if (lugarServicio.listarCategorias().isEmpty()) {
-            /*Categoria ca1 = new Categoria("Restaurante", "Lugar para comer");
-            Categoria ca2 = new Categoria("Hotel", "Lugar para hospedarser");
-            Categoria ca3 = new Categoria("Café", "Lugar para beber café");
-            Categoria ca4 = new Categoria("Bar", "Lugar para beber");
+         if (ciudadServicio.listarCiudades().isEmpty()) {
+             Ciudad C1 = new Ciudad("Armenia");
+             Ciudad C2 = new Ciudad("Medellin");
+             Ciudad C3 = new Ciudad("Pereira");
+             Ciudad C4 = new Ciudad("Cali");
 
-            lugarServicio.crearCategoria(ca1);
-            lugarServicio.crearCategoria(ca2);
-            lugarServicio.crearCategoria(ca3);
-            lugarServicio.crearCategoria(ca4);*/
-            Usuario u1 = new Usuario("mario@gmail.com","mario ortiz", "ETsh", "12345", 5, 56);
-            usuarioServicio.registrarUsuario(u1);
-            Lugar l1 = Lugar.builder().nombre("Coffe break")
-                    .ciudad(ciudadServicio.obtenerCiudad(1))
-                    .descripcion("Café, café y más café")
-                    .direccion("Calle 5 con 5")
-                    .latitud(67)
-                    .longitud(34)
-                    .usuarioCreador(usuarioServicio.buscarUsuario("mario@gmail.com"))
-                    .imagenes(new ArrayList<>())
-                    .categoria(lugarServicio.obtenerCategoria(1))
-                    .horarios(new ArrayList<>()).build();
+             ciudadServicio.registrarCiudad(C1);
+             ciudadServicio.registrarCiudad(C2);
+             ciudadServicio.registrarCiudad(C3);
+             ciudadServicio.registrarCiudad(C4);
+         }
 
-            Lugar l2 = Lugar.builder().nombre("hotel el tiempo")
-                    .ciudad(ciudadServicio.obtenerCiudad(1))
-                    .descripcion("hotel sin techo")
-                    .direccion("Calle ojo me roban")
-                    .latitud(78)
-                    .longitud(34)
-                    .usuarioCreador(usuarioServicio.buscarUsuario("mario@gmail.com"))
-                    .imagenes(new ArrayList<>())
-                    .categoria(lugarServicio.obtenerCategoria(1))
-                    .horarios(new ArrayList<>()).build();
+         if (lugarServicio.listarCategorias().isEmpty()) {
+             Categoria ca1 = new Categoria("Restaurante", "Lugar para comer");
+             Categoria ca2 = new Categoria("Hotel", "Lugar para hospedarser");
+             Categoria ca3 = new Categoria("Café", "Lugar para beber café");
+             Categoria ca4 = new Categoria("Bar", "Lugar para beber");
 
-            lugarServicio.crearLugar(l1);
-            lugarServicio.crearLugar(l2);
-        }
+             lugarServicio.crearCategoria(ca1);
+             lugarServicio.crearCategoria(ca2);
+             lugarServicio.crearCategoria(ca3);
+             lugarServicio.crearCategoria(ca4);
 
-        /*Resena r1 = Resena.builder()
+         }
+         /*Usuario u1 = new Usuario("mario@gmail.com", "mario ortiz", "ETsh", "12345", 5, 56);
+         usuarioServicio.registrarUsuario(u1);
+         Lugar l1 = Lugar.builder().nombre("Coffe break")
+                 .ciudad(ciudadServicio.obtenerCiudad(1))
+                 .descripcion("Café, café y más café")
+                 .direccion("Calle 5 con 5")
+                 .latitud(67)
+                 .longitud(34)
+                 .usuarioCreador(usuarioServicio.buscarUsuario("mario@gmail.com"))
+                 .imagenes(new ArrayList<>())
+                 .categoria(lugarServicio.obtenerCategoria(1))
+                 .horarios(new ArrayList<>()).build();
+
+         Lugar l2 = Lugar.builder().nombre("hotel el tiempo")
+                 .ciudad(ciudadServicio.obtenerCiudad(1))
+                 .descripcion("hotel sin techo")
+                 .direccion("Calle ojo me roban")
+                 .latitud(78)
+                 .longitud(34)
+                 .usuarioCreador(usuarioServicio.buscarUsuario("mario@gmail.com"))
+                 .imagenes(new ArrayList<>())
+                 .categoria(lugarServicio.obtenerCategoria(1))
+                 .horarios(new ArrayList<>()).build();
+
+         lugarServicio.crearLugar(l1);
+         lugarServicio.crearLugar(l2);
+
+         Resena r1 = Resena.builder()
                 .comentario("Está más o menos")
                 .calificacion(3)
                 .usuario(usuarioServicio.buscarUsuario("mario@gmail.com"))
@@ -104,6 +107,6 @@ public class InformacionPorDefecto implements CommandLineRunner {
 
         lugarServicio.crearResena(r2);*/
 
-    }
+     }
 
 }

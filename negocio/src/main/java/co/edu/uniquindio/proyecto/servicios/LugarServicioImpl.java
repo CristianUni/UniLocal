@@ -16,7 +16,7 @@ public class LugarServicioImpl implements LugarServicio {
     private final CategoriaRepo categoriaRepo;
     private final ResenaRepo resenaRepo;
     private final TelefonoRepo telefonoRepo;
-    private final  ImagenRepo imagenRepo;
+    private final ImagenRepo imagenRepo;
 
     public LugarServicioImpl(LugarRepo lugarRepo, CategoriaRepo categoriaRepo, ResenaRepo resenaRepo, TelefonoRepo telefonoRepo, ImagenRepo imagenRepo) {
         this.lugarRepo = lugarRepo;
