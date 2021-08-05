@@ -8,6 +8,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +35,7 @@ public class LugarBean implements Serializable {
     private final CiudadServicio ciudadServicio;
     private final CategoriaServicio categoriaServicio;
     private final UsuarioServicio usuarioServicio;
-    private final RegistroLugarServicio registroLugarServicio;
+
 
     @Value("${upload.url}")
     private String urlImagenes;
@@ -51,15 +52,14 @@ public class LugarBean implements Serializable {
     @Value(value = "#{seguridadBean.persona}")
     private Persona personaLogin;
 
-    @Getter @Setter
-    private RegistroLugar registroLugar;
 
-    public LugarBean(LugarServicio lugarServicio, CiudadServicio ciudadServicio, UsuarioServicio usuarioServicio, CategoriaServicio categoriaServicio, TelefonoServicio telefonoServicio, RegistroLugarServicio registroLugarServicio) {
+
+    public LugarBean(LugarServicio lugarServicio, CiudadServicio ciudadServicio, UsuarioServicio usuarioServicio, CategoriaServicio categoriaServicio, TelefonoServicio telefonoServicio) {
         this.lugarServicio = lugarServicio;
         this.ciudadServicio = ciudadServicio;
         this.usuarioServicio = usuarioServicio;
         this.categoriaServicio = categoriaServicio;
-        this.registroLugarServicio = registroLugarServicio;
+
     }
 
     @PostConstruct
@@ -69,7 +69,6 @@ public class LugarBean implements Serializable {
         this.ciudades = ciudadServicio.listarCiudades();
         this.categorias = lugarServicio.listarCategorias();
         this.imagenes = new ArrayList<>();
-        this.registroLugar= new RegistroLugar();
 
     }
 
@@ -82,13 +81,11 @@ public class LugarBean implements Serializable {
 
 
                     Lugar l = lugarServicio.crearLugar(lugar);
-                    registroLugar.setLugar(l);
 
-                    RegistroLugar r =registroLugarServicio.RegistroLugar(registroLugar);
+                    lugarServicio.RegistrarLugar(l);
 
-                    System.out.println(registroLugar.getCodigo());
 
-                    registroLugarServicio.CrearRegistroLugar(r);
+
 
                     telefono.setLugar(l);
                     lugarServicio.crearTelefono(telefono);

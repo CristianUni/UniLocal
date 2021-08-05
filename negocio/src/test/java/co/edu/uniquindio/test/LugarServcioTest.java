@@ -3,8 +3,6 @@ package co.edu.uniquindio.test;
 import co.edu.uniquindio.proyecto.NegocioApplication;
 import co.edu.uniquindio.proyecto.entidades.Estado;
 import co.edu.uniquindio.proyecto.entidades.Lugar;
-import co.edu.uniquindio.proyecto.entidades.RegistroLugar;
-import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.servicios.LugarServicio;
 
 import org.junit.Test;
@@ -73,7 +71,7 @@ public class LugarServcioTest {
         Date fechaCreacion = sdf.parse("1996/02/14");
         Date fechaAprobacion = sdf.parse("2021/01/16");
 
-        RegistroLugar registroLugarNuevo = new RegistroLugar(Estado.APROBADO, fechaCreacion, fechaAprobacion);
+        //RegistroLugar registroLugarNuevo = new RegistroLugar(Estado.APROBADO, fechaCreacion, fechaAprobacion);
 
         Lugar lugarGuardado = lugarServicio.crearLugar(lugarNuevo);
 

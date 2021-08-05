@@ -2,9 +2,10 @@ package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repositorios.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.PrintStream;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class LugarServicioImpl implements LugarServicio {
         this.resenaRepo = resenaRepo;
         this.telefonoRepo = telefonoRepo;
         this.imagenRepo = imagenRepo;
+
     }
 
 
@@ -86,6 +88,11 @@ public class LugarServicioImpl implements LugarServicio {
 
     @Override
     public Lugar crearLugar(Lugar l) throws Exception {
+
+        Date ahora = new Date();
+
+        l.setFechaCreacion(ahora);
+        l.setEstado(Estado.EN_ESPERA);
 
 
         if (l.getDescripcion() == null) {
@@ -192,6 +199,12 @@ public class LugarServicioImpl implements LugarServicio {
     }
 
     @Override
+    public Lugar RegistrarLugar(Lugar r) throws Exception {
+        return null;
+    }
+
+
+    @Override
     public void crearResena(Resena resena) throws Exception {
         try {
             resena.setFechaCreacion(new Date());
@@ -206,5 +219,21 @@ public class LugarServicioImpl implements LugarServicio {
         return imagenRepo.save(i);
     }
 
+    /*public RegistroLugar AutorizarLugares(RegistroLugar r, int estado) {
+        if (estado ==2) {
+            r.setEstado(Estado.APROBADO);
+            Date ahora = new Date();
+            r.setFechaAprobacion(ahora);
+            System.out.println("el contexto tiene un precio" + ahora);
+            PrintStream var10000 = System.out;
+            LocalDate var10001 = LocalDate.now();
+            var10000.println(var10001 + " fechisimo" + r.getFechaAprobacion());
+        }
 
+        if (estado==1) {
+            r.setEstado(Estado.RECHAZADO);
+        }
+
+        return r;
+    }*/
 }

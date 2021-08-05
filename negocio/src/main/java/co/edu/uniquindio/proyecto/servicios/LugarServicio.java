@@ -16,6 +16,9 @@ public interface LugarServicio {
 
     Lugar crearLugar(Lugar l) throws Exception;
 
+    //RegistroLugar AutorizarLugares(RegistroLugar r, int estado) throws Exception;
+
+
     void eliminarLugar(Integer id) throws Exception;
 
     Lugar actualizarLugar(Lugar lugar) throws Exception;
@@ -35,6 +38,9 @@ public interface LugarServicio {
     List<Horario> listarHorario(Integer idLugar);
 
     Telefono crearTelefono(Telefono telefono);
+
+    Lugar RegistrarLugar(Lugar r) throws Exception;
+
 
     void crearResena(Resena resena) throws Exception;
 

@@ -20,7 +20,7 @@ public class Moderador extends Persona implements Serializable {
     @Getter
     @Setter
     @OneToMany(mappedBy = "moderador")
-    private List<RegistroLugar> registroLugares;
+    private List<Lugar> Lugares;
 
     //contructor sin parametros
     public Moderador() {

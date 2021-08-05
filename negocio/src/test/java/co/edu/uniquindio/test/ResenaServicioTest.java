@@ -2,7 +2,6 @@ package co.edu.uniquindio.test;
 
 import co.edu.uniquindio.proyecto.NegocioApplication;
 import co.edu.uniquindio.proyecto.entidades.Lugar;
-import co.edu.uniquindio.proyecto.entidades.RegistroLugar;
 import co.edu.uniquindio.proyecto.entidades.Resena;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.servicios.LugarServicio;

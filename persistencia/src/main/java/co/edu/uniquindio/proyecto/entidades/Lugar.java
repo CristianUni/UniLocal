@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -46,10 +47,7 @@ public class Lugar implements Serializable {
     @OneToMany(mappedBy = "lugar")
     private List<Horario> horario;
     //relacion uno a uno entre lugar y registrolugar(entidad propietaria)
-    @Getter
-    @Setter
-    @OneToOne(mappedBy = "lugar")
-    private RegistroLugar registroLugar;
+
     //relacion uno a muchos entre lugar y telefono(entidad propietaria)
     @Getter
     @OneToMany(mappedBy = "lugar")
@@ -195,5 +193,74 @@ public class Lugar implements Serializable {
 
     public void setTelefono(Telefono telefono) {
         this.telefono.add(telefono);
+    }
+
+   // public void setRegistrarLugar(Lugar registroLugar) {
+    //}
+    //Llave principal de la entidad que en este caso es un código autogenerado de tipo entero
+
+    /*
+        Atributo de la entidad que es de tipo enum. Este atributo nos indica el estado de el lugar,
+         si está aprobado, rechazado o en espera de aprobación
+         El atributo no puede ser null
+         */
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "estado")
+    private Estado estado;
+    /*
+    Atributo de la entidad que es de tipo date. Este atributo nos indica la fecha de creación de la solicitud del registro del lugar
+    El atributo no puede ser null
+     */
+    @Column(name = "fecha_creacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaCreacion;
+    /*
+    Atributo de la entidad que es de tipo date. Este atributo nos indica la fecha de aprobación de la solicitud del registro del lugar
+    El atributo no puede ser null
+     */
+    @Column(name = "fecha_aprobacion", nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaAprobacion;
+
+    //Relación con la entidad Moderador. Nos indica que un moderador tiene muchas solicitudes de registroLugar
+    @Getter
+    @Setter
+    @ManyToOne
+    private Moderador moderador;
+
+    //Constructor vacío de la entidad
+
+    /*
+    Métodos get y set de la entidad. Los set nos sirve para asignarle valores a los atributos.
+    Los get sirven para obtener los valores de los atributos
+     */
+
+
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaAprobacion() {
+        return fechaAprobacion;
+    }
+
+    public void setFechaAprobacion(Date fechaAprobacion) {
+        this.fechaAprobacion = fechaAprobacion;
+    }
+
+    public void RegistrarLugar(Lugar l) {
     }
 }
